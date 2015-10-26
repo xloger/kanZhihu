@@ -23,7 +23,7 @@ public class HttpUtil {
         InputStream inputStream = doInputStream(url, "GET");
         if (inputStream != null) {
             bytes=StreamUtil.readStream(inputStream);
-//            StreamUtil.close(inputStream);
+            StreamUtil.close(inputStream);
         }
 
         return bytes;
@@ -65,6 +65,8 @@ public class HttpUtil {
                     if("gzip".equals(encoding)){
                         inputStream=new GZIPInputStream(inputStream);
                     }
+
+
 //                    StreamUtil.close(conn);
 
                 }

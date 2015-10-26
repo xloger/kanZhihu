@@ -37,11 +37,7 @@ public class StreamUtil {
         byte[] bytes = null;
         if (in != null) {
             ByteArrayOutputStream bout=new ByteArrayOutputStream();
-            try {
-                readStream(in,bout);
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+            readStream(in,bout);
             bytes=bout.toByteArray();
             close(bout);
         }
@@ -49,13 +45,17 @@ public class StreamUtil {
     }
 
     //TODO 将异常抛出、返回长度
-    public static void readStream(InputStream in,OutputStream out) throws IOException {
+    public static void readStream(InputStream in,OutputStream out) {
         if (in != null&&out!=null) {
             int len=0;
             byte[] bytes=new byte[1024];
 
-            while ((len=in.read(bytes))!=-1){
-                  out.write(bytes,0,len);
+            try {
+                while ((len=in.read(bytes))!=-1){
+                      out.write(bytes,0,len);
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
             }
 
         }
