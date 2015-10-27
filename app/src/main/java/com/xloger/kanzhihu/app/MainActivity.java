@@ -12,6 +12,7 @@ import com.xloger.kanzhihu.app.entities.Post;
 import com.xloger.kanzhihu.app.tasks.ShowPostsTask;
 import com.xloger.kanzhihu.app.tasks.TaskCallBack;
 import com.xloger.kanzhihu.app.tasks.TaskResult;
+import com.xloger.kanzhihu.app.utils.MyLog;
 import org.json.JSONObject;
 
 import java.util.LinkedList;
@@ -43,6 +44,7 @@ public class MainActivity extends ActionBarActivity implements TaskCallBack {
         if (taskResult != null) {
             if (taskResult.data != null) {
                 List<Post> posts = JsonClient.parsePosts((JSONObject) taskResult.data);
+                MyLog.d((taskResult.data).toString());
                 if (posts != null) {
                     postList.addAll(posts);
                     adapter.notifyDataSetChanged();
