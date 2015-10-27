@@ -4,7 +4,9 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 import com.xloger.kanzhihu.app.R;
 import com.xloger.kanzhihu.app.entities.Post;
 
@@ -45,6 +47,7 @@ public class PostAdapter extends AbstractAdapter<Post> {
             holder.date= (TextView) view.findViewById(R.id.item_post_date);
             holder.name= (TextView) view.findViewById(R.id.item_post_name);
             holder.excerpt= (TextView) view.findViewById(R.id.item_post_excerpt);
+            holder.click= (LinearLayout) view.findViewById(R.id.item_post_click);
         }else {
             holder= (ViewHolder) view.getTag();
         }
@@ -64,6 +67,13 @@ public class PostAdapter extends AbstractAdapter<Post> {
         holder.name.setText(map.get(getItem(position).getName()));
         holder.excerpt.setText(getItem(position).getExcerpt());
 
+        holder.click.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(context,"点击了",Toast.LENGTH_SHORT).show();
+            }
+        });
+
 
         return view;
     }
@@ -72,5 +82,6 @@ public class PostAdapter extends AbstractAdapter<Post> {
         public TextView date;
         public TextView name;
         public TextView excerpt;
+        public LinearLayout click;
     }
 }

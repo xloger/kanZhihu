@@ -1,4 +1,4 @@
-package com.xloger.kanzhihu.app;
+package com.xloger.kanzhihu.app.activities;
 
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
@@ -6,6 +6,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ListView;
 import android.widget.TextView;
+import com.xloger.kanzhihu.app.R;
 import com.xloger.kanzhihu.app.adapter.PostAdapter;
 import com.xloger.kanzhihu.app.client.JsonClient;
 import com.xloger.kanzhihu.app.entities.Post;

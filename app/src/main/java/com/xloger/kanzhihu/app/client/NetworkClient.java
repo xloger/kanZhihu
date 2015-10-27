@@ -26,6 +26,12 @@ public class NetworkClient {
         return ret;
     }
 
+    public static JSONObject getAnswers(){
+        JSONObject ret = null;
+
+        return ret;
+    }
+
 
     private static JSONObject getJsonObject(String url){
         JSONObject ret=null;
