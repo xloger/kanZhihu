@@ -44,4 +44,40 @@ public class Answer implements Parsable {
         avatar=json.getString("avatar");
         vote=json.getInt("vote");
     }
+
+    public String getAnswered() {
+        return answered;
+    }
+
+    public String getAuthorhash() {
+        return authorhash;
+    }
+
+    public String getAuthorname() {
+        return authorname;
+    }
+
+    public String getAvatar() {
+        return avatar;
+    }
+
+    public String getQuestionid() {
+        return questionid;
+    }
+
+    public String getSummary() {
+        return summary;
+    }
+
+    public String getTime() {
+        return time;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public int getVote() {
+        return vote;
+    }
 }

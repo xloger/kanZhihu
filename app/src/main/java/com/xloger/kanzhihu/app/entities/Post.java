@@ -35,4 +35,28 @@ public class Post implements Parsable {
         count=json.getInt("count");
         excerpt=json.getString("excerpt");
     }
+
+    public int getCount() {
+        return count;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public String getExcerpt() {
+        return excerpt;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getPic() {
+        return pic;
+    }
+
+    public long getPublishtime() {
+        return publishtime;
+    }
 }
