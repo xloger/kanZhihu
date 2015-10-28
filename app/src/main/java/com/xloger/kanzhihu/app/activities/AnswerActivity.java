@@ -1,5 +1,7 @@
 package com.xloger.kanzhihu.app.activities;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -7,6 +9,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
+import com.xloger.kanzhihu.app.Constants;
 import com.xloger.kanzhihu.app.R;
 import com.xloger.kanzhihu.app.adapter.AnswerAdapter;
 import com.xloger.kanzhihu.app.client.JsonClient;
@@ -14,6 +17,7 @@ import com.xloger.kanzhihu.app.entities.Answer;
 import com.xloger.kanzhihu.app.tasks.ShowAnswersTask;
 import com.xloger.kanzhihu.app.tasks.TaskCallBack;
 import com.xloger.kanzhihu.app.tasks.TaskResult;
+import com.xloger.kanzhihu.app.utils.MyLog;
 import org.json.JSONObject;
 
 import java.util.HashMap;
@@ -49,7 +53,7 @@ public class AnswerActivity extends ActionBarActivity implements TaskCallBack {
         //配置RecyclerView
         answerList = new LinkedList<Answer>();
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        answerAdapter = new AnswerAdapter(answerList,this);
+        answerAdapter = new AnswerAdapter(answerList,this,callBack);
         recyclerView.setAdapter(answerAdapter);
     }
 
@@ -63,5 +67,22 @@ public class AnswerActivity extends ActionBarActivity implements TaskCallBack {
             answerAdapter.notifyDataSetChanged();
 
         }
+    }
+
+    private OpenLinkCallBack callBack=new OpenLinkCallBack() {
+        @Override
+        public void onClick(Answer answer) {
+            String url= Constants.ZHIHU_URL+"question/"+answer.getQuestionid();
+            MyLog.d(url);
+            Uri uri=Uri.parse(url);
+            Intent intent=new Intent();
+            intent.setAction(Intent.ACTION_VIEW);
+            intent.setData(uri);
+            startActivity(intent);
+        }
+    };
+
+    public interface OpenLinkCallBack{
+        void onClick(Answer answer);
     }
 }

@@ -7,6 +7,7 @@ package com.xloger.kanzhihu.app;
  */
 public class Constants {
     public static final String API_URL="http://api.kzhihu.com/";
+    public static final String ZHIHU_URL="http://www.zhihu.com/";
 
     public static final int ACTION_POSTS=10086;
     public static final int ACTION_ANSWER=10087;

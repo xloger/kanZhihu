@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 import com.xloger.kanzhihu.app.R;
+import com.xloger.kanzhihu.app.activities.AnswerActivity;
 import com.xloger.kanzhihu.app.entities.Answer;
 
 import java.util.List;
@@ -19,10 +20,12 @@ import java.util.List;
 public class AnswerAdapter extends RecyclerView.Adapter<AnswerAdapter.AnswerViewHolder> {
     private Context context;
     private List<Answer> answerList;
+    private AnswerActivity.OpenLinkCallBack callBack;
 
-    public AnswerAdapter(List<Answer> answerList, Context context) {
+    public AnswerAdapter(List<Answer> answerList, Context context,AnswerActivity.OpenLinkCallBack callBack) {
         this.answerList = answerList;
         this.context = context;
+        this.callBack=callBack;
     }
 
     @Override
@@ -33,9 +36,15 @@ public class AnswerAdapter extends RecyclerView.Adapter<AnswerAdapter.AnswerView
     }
 
     @Override
-    public void onBindViewHolder(AnswerViewHolder answerViewHolder, int i) {
+    public void onBindViewHolder(AnswerViewHolder answerViewHolder, final int i) {
         answerViewHolder.title.setText(answerList.get(i).getTitle());
         answerViewHolder.summary.setText(answerList.get(i).getSummary());
+        answerViewHolder.openLink.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                callBack.onClick(answerList.get(i));
+            }
+        });
     }
 
     @Override
