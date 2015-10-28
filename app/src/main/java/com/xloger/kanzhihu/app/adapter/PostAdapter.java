@@ -8,6 +8,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.xloger.kanzhihu.app.R;
+import com.xloger.kanzhihu.app.activities.MainActivity;
 import com.xloger.kanzhihu.app.entities.Post;
 
 import java.util.HashMap;
@@ -22,9 +23,11 @@ import java.util.Map;
 public class PostAdapter extends AbstractAdapter<Post> {
 
     private final Map<String, String> map;
+    private MainActivity.MainClickCallBack clickCallBack;
 
-    public PostAdapter(Context context, List<Post> list) {
+    public PostAdapter(Context context, List<Post> list,MainActivity.MainClickCallBack clickCallBack) {
         super(context, list);
+        this.clickCallBack=clickCallBack;
         map = new HashMap<String, String>();
         map.put("yesterday", "昨日最新");
         map.put("recent", "近日热门");
@@ -33,7 +36,7 @@ public class PostAdapter extends AbstractAdapter<Post> {
     }
 
     @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
+    public View getView(final int position, View convertView, ViewGroup parent) {
         View view = null;
         if (convertView == null) {
             view= LayoutInflater.from(context).inflate(R.layout.item_post,parent,false);
@@ -70,7 +73,7 @@ public class PostAdapter extends AbstractAdapter<Post> {
         holder.click.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(context,"点击了",Toast.LENGTH_SHORT).show();
+                clickCallBack.onClick(getItem(position));
             }
         });
 

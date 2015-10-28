@@ -2,11 +2,11 @@ package com.xloger.kanzhihu.app.client;
 
 import com.xloger.kanzhihu.app.Constants;
 import com.xloger.kanzhihu.app.utils.HttpUtil;
+import com.xloger.kanzhihu.app.utils.MyLog;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.UnsupportedEncodingException;
-import java.util.Map;
 
 /**
  * Created by xloger on 2015/10/26.
@@ -26,8 +26,15 @@ public class NetworkClient {
         return ret;
     }
 
-    public static JSONObject getAnswers(){
+    public static JSONObject getAnswers(String date,String name){
         JSONObject ret = null;
+        String app="getpostanswers";
+        String url=Constants.API_URL+app;
+        if (date != null&&name!=null) {
+            url=url+"/"+date+"/"+name;
+        }
+        MyLog.d(url);
+        ret=getJsonObject(url);
 
         return ret;
     }

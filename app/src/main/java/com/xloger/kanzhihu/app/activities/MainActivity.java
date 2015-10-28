@@ -1,5 +1,8 @@
 package com.xloger.kanzhihu.app.activities;
 
+import android.annotation.SuppressLint;
+import android.content.Context;
+import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -24,15 +27,17 @@ public class MainActivity extends ActionBarActivity implements TaskCallBack {
 
     private List<Post> postList;
     private PostAdapter adapter;
+    private Context context;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        context = this;
 
         ListView listView= (ListView) findViewById(R.id.main_list_view);
         postList = new LinkedList<Post>();
-        adapter = new PostAdapter(this,postList);
+        adapter = new PostAdapter(this,postList,clickCallBack);
         listView.setAdapter(adapter);
 
         ShowPostsTask showPostsTask=new ShowPostsTask(this);
@@ -53,5 +58,30 @@ public class MainActivity extends ActionBarActivity implements TaskCallBack {
 
             }
         }
+    }
+
+    private MainClickCallBack clickCallBack=new MainClickCallBack() {
+        @SuppressLint("NewApi")
+        @Override
+        public void onClick(Post post) {
+            String date=post.getDate();
+            String name=post.getName();
+
+            date=date.replaceAll("-","");
+
+
+            Bundle bundle=new Bundle();
+            bundle.putString("date",date);
+            bundle.putString("name",name);
+            Intent intent=new Intent(context,AnswerActivity.class);
+            intent.putExtras(bundle);
+            startActivity(intent,bundle);
+        }
+    };
+
+
+
+    public interface MainClickCallBack{
+        void onClick(Post post);
     }
 }

@@ -9,4 +9,5 @@ public class Constants {
     public static final String API_URL="http://api.kzhihu.com/";
 
     public static final String ACTION_POSTS=10086+"";
+    public static final String ACTION_ANSWER=10087+"";
 }
