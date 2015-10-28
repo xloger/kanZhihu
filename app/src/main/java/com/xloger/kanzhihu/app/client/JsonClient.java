@@ -1,5 +1,6 @@
 package com.xloger.kanzhihu.app.client;
 
+import com.xloger.kanzhihu.app.entities.Answer;
 import com.xloger.kanzhihu.app.entities.Post;
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -35,6 +36,28 @@ public class JsonClient {
 
 
         return postList;
+    }
+
+    public static List<Answer> parseAnswer(JSONObject json){
+        List<Answer> answerList = null;
+        try {
+            if (json != null&&"".equals(json.getString("error"))) {
+                answerList=new LinkedList<Answer>();
+                JSONArray jsonArray = json.getJSONArray("answers");
+                for (int i = 0; i < jsonArray.length(); i++) {
+                    Answer answer=new Answer();
+                    JSONObject jsonObject = jsonArray.getJSONObject(i);
+                    answer.parseJson(jsonObject);
+                    answerList.add(answer);
+                }
+
+            }
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+
+        return answerList;
     }
 
 }

@@ -43,17 +43,22 @@ public class MainActivity extends ActionBarActivity implements TaskCallBack, Swi
         setContentView(R.layout.activity_main);
         context = this;
 
+        //初始化控件
         ListView listView= (ListView) findViewById(R.id.main_list_view);
         swipeRefreshLayout = (SwipeRefreshLayout) findViewById(R.id.main_swipe_refresh_layout);
 
+        //设置SwipeRefreshLayout
         swipeRefreshLayout.setColorSchemeResources(R.color.theme);
         swipeRefreshLayout.setOnRefreshListener(this);
 
+        //配置适配器
         postList = new LinkedList<Post>();
         adapter = new PostAdapter(this,postList,clickCallBack);
         listView.setAdapter(adapter);
+        //设置上拉加载的监听器
         listView.setOnScrollListener(scrollListener);
 
+        //进行初始化的一次异步获取信息
         ShowPostsTask showPostsTask=new ShowPostsTask(this);
         showPostsTask.execute();
     }

@@ -26,7 +26,7 @@ public class Answer implements Parsable {
     private String time;
     private String summary;
     private String questionid;
-    private String answered;
+    private String answerid;
     private String authorname;
     private String authorhash;
     private String avatar;
@@ -38,15 +38,15 @@ public class Answer implements Parsable {
         time=json.getString("time");
         summary=json.getString("summary");
         questionid=json.getString("questionid");
-        answered=json.getString("answered");
+        answerid=json.getString("answerid");
         authorname=json.getString("authorname");
         authorhash=json.getString("authorhash");
         avatar=json.getString("avatar");
         vote=json.getInt("vote");
     }
 
-    public String getAnswered() {
-        return answered;
+    public String getAnswerid() {
+        return answerid;
     }
 
     public String getAuthorhash() {
