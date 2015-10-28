@@ -6,6 +6,6 @@ package com.xloger.kanzhihu.app.tasks;
  * Email:phoenix@xloger.com
  */
 public class TaskResult {
-    public String action;
+    public int action;
     public Object data;
 }

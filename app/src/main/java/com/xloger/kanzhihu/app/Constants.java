@@ -8,6 +8,8 @@ package com.xloger.kanzhihu.app;
 public class Constants {
     public static final String API_URL="http://api.kzhihu.com/";
 
-    public static final String ACTION_POSTS=10086+"";
-    public static final String ACTION_ANSWER=10087+"";
+    public static final int ACTION_POSTS=10086;
+    public static final int ACTION_ANSWER=10087;
+    public static final int ACTION_POSTS_REFRESH=10088;
+    public static final int ACTION_POSTS_MORE=10089;
 }

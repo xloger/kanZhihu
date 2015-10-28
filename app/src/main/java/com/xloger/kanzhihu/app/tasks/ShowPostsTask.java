@@ -21,6 +21,16 @@ public class ShowPostsTask extends BaseTask {
 
         taskResult=new TaskResult();
         taskResult.action= Constants.ACTION_POSTS;
+        if (params.length!=0&&params[0]!=null) {
+            String mode = params[0].get("mode");
+            if("refresh".equals(mode)){
+                taskResult.action= Constants.ACTION_POSTS_REFRESH;
+            }else if("more".equals(mode)){
+                taskResult.action= Constants.ACTION_POSTS_MORE;
+            }
+        }
+
+
         String timeStamp=null;
         if (params.length!=0&&params[0]!=null) {
             timeStamp=params[0].get("timeStamp");
