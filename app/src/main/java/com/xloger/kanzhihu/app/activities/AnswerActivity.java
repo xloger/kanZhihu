@@ -59,11 +59,18 @@ public class AnswerActivity extends Activity implements TaskCallBack {
         answerAdapter = new AnswerAdapter(answerList,this,callBack);
         recyclerView.setAdapter(answerAdapter);
 
+        Map<String, String> mapName = new HashMap<String, String>();
+        mapName.put("yesterday", "昨日最新");
+        mapName.put("recent", "近日热门");
+        mapName.put("archive", "历史精华");
+
         ActionBar actionBar = getActionBar();
         if (actionBar != null) {
             actionBar.setDisplayHomeAsUpEnabled(true);
             actionBar.setDisplayShowHomeEnabled(false);
-            actionBar.setTitle(date+name);
+            String date1=date.charAt(4)+""+date.charAt(5)+"月"+date.charAt(6)+date.charAt(7)+"日";
+            String title=date1+" "+mapName.get(name);
+            actionBar.setTitle(title);
         }
 
     }
