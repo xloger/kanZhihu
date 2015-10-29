@@ -17,6 +17,13 @@
     <style name="AppTheme" parent="AppBaseTheme">
         <!-- All customizations that are NOT specific to a particular API-level can go here. -->
         <item name="android:actionBarStyle">@style/myActionBarStyle</item>
+
+
+        <!-- 设置overflow中items的背景和点击选中时的style -->
+        <item name="android:dropDownListViewStyle">@style/MyDropDownListView</item>
+
+        <!--<item name="actionBarWidgetTheme">@style/Theme.overflowmenu.theme</item>-->
+
     </style>
     <style name="MyTheme" parent="android:Theme.Light">
         <item name="android:windowTitleBackgroundStyle">@style/style_bg_bar</item>
@@ -24,13 +31,43 @@
     <style name="style_bg_bar">
         <item name="android:background">#F00</item>
     </style>
-    <style name="myActionBarStyle" parent="android:Widget.ActionBar">
+    <style name="myActionBarStyle" parent="android:Widget.Holo.Light.ActionBar">
         <item name="android:background">@color/theme</item>
         <item name="android:titleTextStyle">@style/AcBar_titleStyle</item>
     </style>
     <style name="AcBar_titleStyle">
         <item name="android:textSize">20sp</item>
         <item name="android:textColor">#fff</item>
+    </style>
+
+
+    <!--Android3.0及以上ActionBar样式-->
+    <style name="MyActionBar" parent="@android:style/Widget.Holo.Light.ActionBar">
+        <!--设置ActionBar的背景-->
+        <item name="android:background">#FFF</item>
+        <!--设置ActionBar的标题的样式-->
+        <item name="android:titleTextStyle">@style/ActionBarTextStyle</item>
+    </style>
+
+    <!--Android3.0及以上ActionBar字体样式 -->
+    <style name="ActionBarTextStyle" parent="@android:style/TextAppearance.Holo.Widget.ActionBar.Title">
+        <item name="android:textColor">#F00</item>
+    </style>
+
+
+    <!--Android3.0及以上设置overflow中items的背景和点击选中时的style-->
+    <style name="MyDropDownListView" parent="@android:style/Widget.Holo.Light.ListView.DropDown">
+        <!--<item name="android:listSelector">@drawable/choose_action_items_background</item>-->
+        <item name="android:background">#F00</item>
+    </style>
+
+
+    <style name="Theme.overflowmenu.theme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="android:popupMenuStyle">@style/PopupMenu</item>
+    </style>
+
+    <style name="PopupMenu" parent="android:Widget.ListPopupWindow">
+        <item name="android:popupBackground">#F00</item>
     </style>
 
 </resources>

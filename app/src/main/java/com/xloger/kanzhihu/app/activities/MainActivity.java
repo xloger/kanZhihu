@@ -9,9 +9,7 @@ import android.support.v4.app.FragmentActivity;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.view.MotionEvent;
+import android.view.*;
 import android.widget.AbsListView;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -27,6 +25,7 @@ import com.xloger.kanzhihu.app.tasks.TaskResult;
 import com.xloger.kanzhihu.app.utils.MyLog;
 import org.json.JSONObject;
 
+import java.lang.reflect.Field;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
@@ -65,8 +64,25 @@ public class MainActivity extends Activity implements TaskCallBack, SwipeRefresh
         ShowPostsTask showPostsTask=new ShowPostsTask(this);
         showPostsTask.execute();
 
+
+        setOverflowShowingAlways();
+
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater menuInflater = getMenuInflater();
+        menuInflater.inflate(R.menu.menu_main,menu);
+
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+
+        return super.onOptionsItemSelected(item);
+    }
 
     /**
      * 异步任务结束后执行的回调方法
@@ -181,6 +197,23 @@ public class MainActivity extends Activity implements TaskCallBack, SwipeRefresh
             isButtom=(firstVisibleItem+visibleItemCount)==totalItemCount;
         }
     };
+
+
+
+
+    private void setOverflowShowingAlways() {
+        try {
+            ViewConfiguration config = ViewConfiguration.get(this);
+            Field menuKeyField = ViewConfiguration.class.getDeclaredField("sHasPermanentMenuKey");
+            menuKeyField.setAccessible(true);
+            menuKeyField.setBoolean(config, false);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+
+
 
     /**
      * item点击事件所需要的回调接口
