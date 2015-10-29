@@ -1,7 +1,10 @@
 package com.xloger.kanzhihu.app.activities;
 
+import android.app.ActionBar;
+import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
+import android.support.v4.app.FragmentActivity;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -25,7 +28,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
-public class AnswerActivity extends ActionBarActivity implements TaskCallBack {
+public class AnswerActivity extends Activity implements TaskCallBack {
 
     private RecyclerView recyclerView;
     private List<Answer> answerList;
@@ -55,9 +58,15 @@ public class AnswerActivity extends ActionBarActivity implements TaskCallBack {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         answerAdapter = new AnswerAdapter(answerList,this,callBack);
         recyclerView.setAdapter(answerAdapter);
+
+        ActionBar actionBar = getActionBar();
+        actionBar.setDisplayShowHomeEnabled(false);
+        actionBar.setTitle(date+name);
     }
 
-
+    /**
+     * 完成异步任务时的回调方法
+     */
     @Override
     public void onTaskFinish(TaskResult taskResult) {
         JSONObject jsonObject= (JSONObject) taskResult.data;
@@ -69,10 +78,13 @@ public class AnswerActivity extends ActionBarActivity implements TaskCallBack {
         }
     }
 
+    /**
+     * 设置点击打开知乎App
+     */
     private OpenLinkCallBack callBack=new OpenLinkCallBack() {
         @Override
         public void onClick(Answer answer) {
-            String url= Constants.ZHIHU_URL+"question/"+answer.getQuestionid();
+            String url= Constants.ZHIHU_URL+"question/"+answer.getQuestionid()+"/answer/"+answer.getAnswerid();
             MyLog.d(url);
             Uri uri=Uri.parse(url);
             Intent intent=new Intent();
@@ -82,6 +94,9 @@ public class AnswerActivity extends ActionBarActivity implements TaskCallBack {
         }
     };
 
+    /**
+     * 点击事件的回调接口
+     */
     public interface OpenLinkCallBack{
         void onClick(Answer answer);
     }

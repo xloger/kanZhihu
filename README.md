@@ -8,3 +8,4 @@ www.kzhihu.com 的安卓App
 * 无网络的优化
 * Task的释放
 * 侧滑栏
+* CardView点击反馈

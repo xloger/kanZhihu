@@ -1,8 +1,11 @@
 package com.xloger.kanzhihu.app.activities;
 
 import android.annotation.SuppressLint;
+import android.app.ActionBar;
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.support.v4.app.FragmentActivity;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
@@ -30,7 +33,7 @@ import java.util.List;
 import java.util.Map;
 
 
-public class MainActivity extends ActionBarActivity implements TaskCallBack, SwipeRefreshLayout.OnRefreshListener {
+public class MainActivity extends Activity implements TaskCallBack, SwipeRefreshLayout.OnRefreshListener {
 
     private List<Post> postList;
     private PostAdapter adapter;
@@ -61,6 +64,7 @@ public class MainActivity extends ActionBarActivity implements TaskCallBack, Swi
         //进行初始化的一次异步获取信息
         ShowPostsTask showPostsTask=new ShowPostsTask(this);
         showPostsTask.execute();
+
     }
 
 

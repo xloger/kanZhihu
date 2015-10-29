@@ -18,7 +18,7 @@ android {
 
     defaultConfig {
         applicationId "com.xloger.kanzhihu.app"
-        minSdkVersion 9
+        minSdkVersion 14
         targetSdkVersion 22
         versionCode 1
         versionName "1.0"
