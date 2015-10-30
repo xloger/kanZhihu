@@ -32,7 +32,7 @@ import java.util.List;
 import java.util.Map;
 
 
-public class MainActivity extends Activity implements TaskCallBack, SwipeRefreshLayout.OnRefreshListener {
+public class MainActivity extends FragmentActivity implements TaskCallBack, SwipeRefreshLayout.OnRefreshListener {
 
     private List<Post> postList;
     private PostAdapter adapter;
@@ -80,8 +80,35 @@ public class MainActivity extends Activity implements TaskCallBack, SwipeRefresh
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
 
+        switch (item.getItemId()){
+            case R.id.main_random:
+                openRandom();
+                break;
+            case R.id.main_settings:
+                openSettings();
+                break;
+            case R.id.main_about:
+                openAbout();
+                break;
+        }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    private void openRandom(){
+        String date=null;
+
+        String tempName[]=new String[]{"yesterday","recent","archive"};
+        String name=tempName[((int) (Math.random() * 3))];
+        openAnswer(date,name);
+    }
+
+    private void openSettings(){
+
+    }
+
+    private void openAbout(){
+
     }
 
     /**
@@ -152,15 +179,19 @@ public class MainActivity extends Activity implements TaskCallBack, SwipeRefresh
 
             date=date.replaceAll("-","");
 
+            openAnswer(date,name);
 
-            Bundle bundle=new Bundle();
-            bundle.putString("date",date);
-            bundle.putString("name",name);
-            Intent intent=new Intent(context,AnswerActivity.class);
-            intent.putExtras(bundle);
-            startActivity(intent, bundle);
         }
     };
+
+    private void openAnswer(String date,String name){
+        Bundle bundle=new Bundle();
+        bundle.putString("date",date);
+        bundle.putString("name",name);
+        Intent intent=new Intent(context,AnswerActivity.class);
+        intent.putExtras(bundle);
+        this.startActivity(intent, bundle);
+    }
 
     /**
      * SwipeRefreshLayout附带的方法，执行一个刷新的异步操作

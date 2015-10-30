@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+import com.xloger.kanzhihu.app.Constants;
 import com.xloger.kanzhihu.app.R;
 import com.xloger.kanzhihu.app.activities.MainActivity;
 import com.xloger.kanzhihu.app.entities.Post;
@@ -22,16 +23,12 @@ import java.util.Map;
  */
 public class PostAdapter extends AbstractAdapter<Post> {
 
-    private final Map<String, String> map;
+    private final Map<String, String> map= Constants.nameMap;
     private MainActivity.MainClickCallBack clickCallBack;
 
     public PostAdapter(Context context, List<Post> list,MainActivity.MainClickCallBack clickCallBack) {
         super(context, list);
         this.clickCallBack=clickCallBack;
-        map = new HashMap<String, String>();
-        map.put("yesterday", "昨日最新");
-        map.put("recent", "近日热门");
-        map.put("archive", "历史精华");
 
     }
 

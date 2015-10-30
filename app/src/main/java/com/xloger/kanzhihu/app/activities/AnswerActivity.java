@@ -59,10 +59,7 @@ public class AnswerActivity extends Activity implements TaskCallBack {
         answerAdapter = new AnswerAdapter(answerList,this,callBack);
         recyclerView.setAdapter(answerAdapter);
 
-        Map<String, String> mapName = new HashMap<String, String>();
-        mapName.put("yesterday", "昨日最新");
-        mapName.put("recent", "近日热门");
-        mapName.put("archive", "历史精华");
+        Map<String, String> mapName = Constants.nameMap;
 
         ActionBar actionBar = getActionBar();
         if (actionBar != null) {

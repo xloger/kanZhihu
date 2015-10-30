@@ -1,5 +1,8 @@
 package com.xloger.kanzhihu.app;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * Created by xloger on 2015/10/26.
  * Author:xloger
@@ -13,4 +16,17 @@ public class Constants {
     public static final int ACTION_ANSWER=10087;
     public static final int ACTION_POSTS_REFRESH=10088;
     public static final int ACTION_POSTS_MORE=10089;
+
+    public static final Map<String,String> nameMap;
+
+    static {
+        nameMap=new HashMap<String, String>();
+        nameMap.put("yesterday", "昨日最新");
+        nameMap.put("recent", "近日热门");
+        nameMap.put("archive", "历史精华");
+    }
+
+    public static final int CREATE_YEAR=2014;
+    public static final int CREATE_MOUNTH=6;
+    public static final int CREATE_DAY=25;
 }

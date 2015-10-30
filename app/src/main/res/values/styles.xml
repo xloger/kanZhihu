@@ -23,12 +23,12 @@
 
 
     </style>
-    <style name="MyTheme" parent="android:Theme.Light">
-        <item name="android:windowTitleBackgroundStyle">@style/style_bg_bar</item>
-    </style>
-    <style name="style_bg_bar">
-        <item name="android:background">#F00</item>
-    </style>
+    <!--<style name="MyTheme" parent="android:Theme.Light">-->
+        <!--<item name="android:windowTitleBackgroundStyle">@style/style_bg_bar</item>-->
+    <!--</style>-->
+    <!--<style name="style_bg_bar">-->
+        <!--<item name="android:background">@color/theme</item>-->
+    <!--</style>-->
     <style name="myActionBarStyle" parent="android:Widget.Holo.Light.ActionBar">
         <item name="android:background">@color/theme</item>
         <item name="android:titleTextStyle">@style/AcBar_titleStyle</item>
