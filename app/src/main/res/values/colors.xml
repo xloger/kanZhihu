@@ -5,4 +5,8 @@
 
     <color name="white">#FFF</color>
     <color name="white_click">#7FFF</color>
+
+    <color name="text_one">#DE000000</color>
+    <color name="text_two">#8A000000</color>
+    <color name="text_three">#42000000</color>
 </resources>

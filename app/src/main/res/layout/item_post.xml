@@ -50,7 +50,8 @@
                 android:maxLines="5"
                 android:ellipsize="end"
                 android:textSize="16sp"
-                android:text="时间"
+                android:textColor="@color/text_two"
+                android:text="内容简介"
                 />
     </LinearLayout>
 

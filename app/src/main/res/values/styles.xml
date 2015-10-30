@@ -5,7 +5,7 @@
         Base application theme, dependent on API level. This theme is replaced
         by AppBaseTheme from res/values-vXX/styles.xml on newer devices.
     -->
-    <style name="AppBaseTheme" parent="android:Theme.Holo.Light.DarkActionBar">
+    <style name="AppBaseTheme" parent="android:Theme.Holo.Light">
         <!--
             Theme customizations available in newer API levels can go in
             res/values-vXX/styles.xml, while customizations related to
@@ -18,11 +18,9 @@
         <!-- All customizations that are NOT specific to a particular API-level can go here. -->
         <item name="android:actionBarStyle">@style/myActionBarStyle</item>
 
-
         <!-- 设置overflow中items的背景和点击选中时的style -->
-        <item name="android:dropDownListViewStyle">@style/MyDropDownListView</item>
+        <!--<item name="android:dropDownListViewStyle">@style/MyDropDownListView</item>-->
 
-        <!--<item name="actionBarWidgetTheme">@style/Theme.overflowmenu.theme</item>-->
 
     </style>
     <style name="MyTheme" parent="android:Theme.Light">
@@ -36,7 +34,7 @@
         <item name="android:titleTextStyle">@style/AcBar_titleStyle</item>
     </style>
     <style name="AcBar_titleStyle">
-        <item name="android:textSize">20sp</item>
+        <item name="android:textSize">24sp</item>
         <item name="android:textColor">#fff</item>
     </style>
 
@@ -55,19 +53,13 @@
     </style>
 
 
+
+
     <!--Android3.0及以上设置overflow中items的背景和点击选中时的style-->
     <style name="MyDropDownListView" parent="@android:style/Widget.Holo.Light.ListView.DropDown">
-        <!--<item name="android:listSelector">@drawable/choose_action_items_background</item>-->
-        <item name="android:background">#F00</item>
+        <item name="android:listSelector">#AAA</item>
+        <item name="android:background">#FFF</item>
     </style>
 
-
-    <style name="Theme.overflowmenu.theme" parent="Theme.AppCompat.Light.DarkActionBar">
-        <item name="android:popupMenuStyle">@style/PopupMenu</item>
-    </style>
-
-    <style name="PopupMenu" parent="android:Widget.ListPopupWindow">
-        <item name="android:popupBackground">#F00</item>
-    </style>
 
 </resources>
