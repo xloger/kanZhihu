@@ -23,10 +23,10 @@ import com.xloger.kanzhihu.app.tasks.TaskResult;
 import com.xloger.kanzhihu.app.utils.MyLog;
 import org.json.JSONObject;
 
-import java.util.HashMap;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Map;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.*;
 
 public class AnswerActivity extends Activity implements TaskCallBack {
 
@@ -65,8 +65,16 @@ public class AnswerActivity extends Activity implements TaskCallBack {
         if (actionBar != null) {
             actionBar.setDisplayHomeAsUpEnabled(true);
             actionBar.setDisplayShowHomeEnabled(false);
-            String date1=date.charAt(4)+""+date.charAt(5)+"月"+date.charAt(6)+date.charAt(7)+"日";
-            String title=date1+" "+mapName.get(name);
+            DateFormat format1=new SimpleDateFormat("yyyyMMdd");
+            Date titleDate=new Date();
+            try {
+                titleDate=format1.parse(date);
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+            DateFormat format2=new SimpleDateFormat("MM月dd日");
+            String tempDate=format2.format(titleDate);
+            String title=tempDate+" "+mapName.get(name);
             actionBar.setTitle(title);
         }
 

@@ -1,10 +1,12 @@
 package com.xloger.kanzhihu.app.activities;
 
 import android.annotation.SuppressLint;
+import android.annotation.TargetApi;
 import android.app.ActionBar;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.os.Build;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.ActionBarActivity;
@@ -26,10 +28,11 @@ import com.xloger.kanzhihu.app.utils.MyLog;
 import org.json.JSONObject;
 
 import java.lang.reflect.Field;
-import java.util.HashMap;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Map;
+import java.security.Timestamp;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.*;
 
 
 public class MainActivity extends FragmentActivity implements TaskCallBack, SwipeRefreshLayout.OnRefreshListener {
@@ -97,6 +100,17 @@ public class MainActivity extends FragmentActivity implements TaskCallBack, Swip
 
     private void openRandom(){
         String date=null;
+        Date startDate=new Date();
+        long begin=System.currentTimeMillis();
+        DateFormat format=new SimpleDateFormat("yyyy-MM-dd");
+        try {
+            startDate=format.parse(Constants.START_DATE);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        long end=startDate.getTime();
+        long randomTime= (long) (begin+Math.random()*(end-begin));
+        date=format.format(randomTime);
 
         String tempName[]=new String[]{"yesterday","recent","archive"};
         String name=tempName[((int) (Math.random() * 3))];
@@ -177,14 +191,16 @@ public class MainActivity extends FragmentActivity implements TaskCallBack, Swip
             String date=post.getDate();
             String name=post.getName();
 
-            date=date.replaceAll("-","");
+
 
             openAnswer(date,name);
 
         }
     };
 
+    @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
     private void openAnswer(String date,String name){
+        date=date.replaceAll("-","");
         Bundle bundle=new Bundle();
         bundle.putString("date",date);
         bundle.putString("name",name);

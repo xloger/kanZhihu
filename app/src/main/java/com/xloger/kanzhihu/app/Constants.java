@@ -26,7 +26,5 @@ public class Constants {
         nameMap.put("archive", "历史精华");
     }
 
-    public static final int CREATE_YEAR=2014;
-    public static final int CREATE_MOUNTH=6;
-    public static final int CREATE_DAY=25;
+    public static final String START_DATE="2014-06-25";
 }
