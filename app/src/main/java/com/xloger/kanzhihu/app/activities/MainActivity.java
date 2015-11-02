@@ -154,6 +154,9 @@ public class MainActivity extends FragmentActivity implements TaskCallBack, Swip
         if (posts != null) {
             postList.addAll(posts);
             adapter.notifyDataSetChanged();
+            Toast.makeText(this,"已更新至最新",Toast.LENGTH_SHORT).show();
+        }else {
+            Toast.makeText(this,"尚未有新内容",Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -166,6 +169,9 @@ public class MainActivity extends FragmentActivity implements TaskCallBack, Swip
             postList.clear();
             postList.addAll(posts);
             adapter.notifyDataSetChanged();
+            Toast.makeText(this,"已更新至最新",Toast.LENGTH_SHORT).show();
+        }else {
+            Toast.makeText(this,"尚未有新内容",Toast.LENGTH_SHORT).show();
         }
         swipeRefreshLayout.setRefreshing(false);
     }
@@ -178,6 +184,8 @@ public class MainActivity extends FragmentActivity implements TaskCallBack, Swip
         if (posts != null) {
             postList.addAll(posts);
             adapter.notifyDataSetChanged();
+        }else {
+            Toast.makeText(this,"加载失败，请重试",Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -190,8 +198,6 @@ public class MainActivity extends FragmentActivity implements TaskCallBack, Swip
         public void onClick(Post post) {
             String date=post.getDate();
             String name=post.getName();
-
-
 
             openAnswer(date,name);
 
