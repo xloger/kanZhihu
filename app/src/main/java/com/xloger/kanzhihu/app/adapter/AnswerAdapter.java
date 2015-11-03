@@ -6,6 +6,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import com.xloger.kanzhihu.app.R;
@@ -47,6 +48,9 @@ public class AnswerAdapter extends RecyclerView.Adapter<AnswerAdapter.AnswerView
                 callBack.onClick(answerList.get(i));
             }
         });
+
+        answerViewHolder.author.setText(answerList.get(i).getAuthorname());
+        answerViewHolder.vote.setText(answerList.get(i).getAuthorname());
     }
 
     @Override
@@ -60,12 +64,20 @@ public class AnswerAdapter extends RecyclerView.Adapter<AnswerAdapter.AnswerView
         private TextView openLink;
         private CardView layout;
 
+        private ImageView avatar;
+        private TextView author;
+        private TextView vote;
+
         public AnswerViewHolder(View itemView) {
             super(itemView);
             title= (TextView) itemView.findViewById(R.id.item_answer_title);
             summary=(TextView) itemView.findViewById(R.id.item_answer_summary);
 //            openLink=(TextView) itemView.findViewById(R.id.item_answer_open_link);
             layout=(CardView)itemView.findViewById(R.id.item_answer_layout);
+
+            avatar=(ImageView)itemView.findViewById(R.id.item_answer_avatar);
+            author=(TextView)itemView.findViewById(R.id.item_answer_author);
+            vote=(TextView)itemView.findViewById(R.id.item_answer_vote);
         }
     }
 }
