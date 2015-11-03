@@ -1,10 +1,12 @@
 package com.xloger.kanzhihu.app.adapter;
 
 import android.content.Context;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import com.xloger.kanzhihu.app.R;
 import com.xloger.kanzhihu.app.activities.AnswerActivity;
@@ -39,7 +41,7 @@ public class AnswerAdapter extends RecyclerView.Adapter<AnswerAdapter.AnswerView
     public void onBindViewHolder(AnswerViewHolder answerViewHolder, final int i) {
         answerViewHolder.title.setText(answerList.get(i).getTitle());
         answerViewHolder.summary.setText(answerList.get(i).getSummary());
-        answerViewHolder.openLink.setOnClickListener(new View.OnClickListener() {
+        answerViewHolder.layout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 callBack.onClick(answerList.get(i));
@@ -56,12 +58,14 @@ public class AnswerAdapter extends RecyclerView.Adapter<AnswerAdapter.AnswerView
         private TextView title;
         private TextView summary;
         private TextView openLink;
+        private CardView layout;
 
         public AnswerViewHolder(View itemView) {
             super(itemView);
             title= (TextView) itemView.findViewById(R.id.item_answer_title);
             summary=(TextView) itemView.findViewById(R.id.item_answer_summary);
-            openLink=(TextView) itemView.findViewById(R.id.item_answer_open_link);
+//            openLink=(TextView) itemView.findViewById(R.id.item_answer_open_link);
+            layout=(CardView)itemView.findViewById(R.id.item_answer_layout);
         }
     }
 }

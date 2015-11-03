@@ -1,6 +1,7 @@
 package com.xloger.kanzhihu.app.adapter;
 
 import android.content.Context;
+import android.support.v7.widget.CardView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -48,6 +49,7 @@ public class PostAdapter extends AbstractAdapter<Post> {
             holder.name= (TextView) view.findViewById(R.id.item_post_name);
             holder.excerpt= (TextView) view.findViewById(R.id.item_post_excerpt);
             holder.click= (LinearLayout) view.findViewById(R.id.item_post_click);
+            holder.cardView=(CardView)view.findViewById(R.id.item_post_card_view);
         }else {
             holder= (ViewHolder) view.getTag();
         }
@@ -67,7 +69,7 @@ public class PostAdapter extends AbstractAdapter<Post> {
         holder.name.setText(map.get(getItem(position).getName()));
         holder.excerpt.setText(getItem(position).getExcerpt());
 
-        holder.click.setOnClickListener(new View.OnClickListener() {
+        holder.cardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 clickCallBack.onClick(getItem(position));
@@ -83,5 +85,6 @@ public class PostAdapter extends AbstractAdapter<Post> {
         public TextView name;
         public TextView excerpt;
         public LinearLayout click;
+        public CardView cardView;
     }
 }
