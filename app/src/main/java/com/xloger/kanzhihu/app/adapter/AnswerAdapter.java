@@ -11,6 +11,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import com.xloger.kanzhihu.app.R;
 import com.xloger.kanzhihu.app.activities.AnswerActivity;
+import com.xloger.kanzhihu.app.cache.CacheTool;
 import com.xloger.kanzhihu.app.entities.Answer;
 
 import java.util.List;
@@ -51,6 +52,10 @@ public class AnswerAdapter extends RecyclerView.Adapter<AnswerAdapter.AnswerView
 
         answerViewHolder.author.setText(answerList.get(i).getAuthorname());
         answerViewHolder.vote.setText(answerList.get(i).getVote()+"");
+
+        //TODO 设置默认头像
+        answerViewHolder.avatar.setTag(answerList.get(i).getAvatar());
+        CacheTool.cacheImage(answerViewHolder.avatar,answerList.get(i).getAvatar(),30,30);
     }
 
     @Override

@@ -23,7 +23,7 @@ public class FileCache {
     }
 
     public static void createInstance(Context context){
-        if (fileCache != null) {
+        if (fileCache == null) {
             fileCache=new FileCache(context);
         }
     }
