@@ -50,7 +50,7 @@ public class AnswerAdapter extends RecyclerView.Adapter<AnswerAdapter.AnswerView
         });
 
         answerViewHolder.author.setText(answerList.get(i).getAuthorname());
-        answerViewHolder.vote.setText(answerList.get(i).getAuthorname());
+        answerViewHolder.vote.setText(answerList.get(i).getVote()+"");
     }
 
     @Override

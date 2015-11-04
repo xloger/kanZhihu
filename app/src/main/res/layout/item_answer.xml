@@ -31,8 +31,8 @@
                 >
             <ImageView
                     android:id="@+id/item_answer_avatar"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
                     android:src="@mipmap/ic_launcher"
                     />
 
@@ -43,6 +43,7 @@
                     android:layout_weight="1"
                     android:layout_gravity="center_vertical"
                     android:gravity="left"
+                    android:textSize="14dp"
                     android:text="答主"
                     />
             <TextView
@@ -51,7 +52,10 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
                     android:background="@color/theme"
-                    android:padding="2dp"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="5dp"
+                    android:paddingTop="2dp"
+                    android:paddingBottom="2dp"
                     android:textColor="#FFF"
                     android:text="746"
                     />
