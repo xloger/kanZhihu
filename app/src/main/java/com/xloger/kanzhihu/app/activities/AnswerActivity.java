@@ -33,6 +33,7 @@ public class AnswerActivity extends Activity implements TaskCallBack {
     private RecyclerView recyclerView;
     private List<Answer> answerList;
     private AnswerAdapter answerAdapter;
+    private ShowAnswersTask task;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,7 +48,7 @@ public class AnswerActivity extends Activity implements TaskCallBack {
         String name=bundle.getString("name");
 
         //启动异步任务加载内容
-        ShowAnswersTask task=new ShowAnswersTask(this);
+        task = new ShowAnswersTask(this);
         Map<String,String> map=new HashMap<String, String>();
         map.put("date",date);
         map.put("name",name);
@@ -88,6 +89,12 @@ public class AnswerActivity extends Activity implements TaskCallBack {
                 break;
         }
         return true;
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        task.cancel(true);
     }
 
     /**

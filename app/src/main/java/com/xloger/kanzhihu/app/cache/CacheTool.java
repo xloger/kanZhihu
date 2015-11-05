@@ -36,7 +36,7 @@ public class CacheTool {
             FileCache fileCache = FileCache.getInstance();
             byte[] bytes = fileCache.load(url);
             if (bytes == null||bytes.length==0) {
-                view.setTag(url);
+//                view.setTag(url);
                 SimpleTask task=new SimpleTask(new TaskCallBack() {
                     @Override
                     public void onTaskFinish(TaskResult taskResult) {

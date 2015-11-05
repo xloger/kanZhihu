@@ -98,6 +98,12 @@ public class MainActivity extends FragmentActivity implements TaskCallBack, Swip
         return super.onOptionsItemSelected(item);
     }
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+
+    }
+
     private void openRandom(){
         String date=null;
         Date startDate=new Date();
@@ -154,7 +160,7 @@ public class MainActivity extends FragmentActivity implements TaskCallBack, Swip
         if (posts != null) {
             postList.addAll(posts);
             adapter.notifyDataSetChanged();
-            Toast.makeText(this,"已更新至最新",Toast.LENGTH_SHORT).show();
+            Toast.makeText(this,"已自动更新至最新",Toast.LENGTH_SHORT).show();
         }else {
             Toast.makeText(this,"尚未有新内容",Toast.LENGTH_SHORT).show();
         }
