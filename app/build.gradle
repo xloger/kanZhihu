@@ -13,9 +13,16 @@ repositories {
 }
 
 android {
+    signingConfigs {
+        xloger_company {
+            keyAlias 'xloger_release'
+            keyPassword 'lalala360'
+            storeFile file('../release.keystore')
+            storePassword 'lalala360'
+        }
+    }
     compileSdkVersion 22
     buildToolsVersion "22.0.1"
-
     defaultConfig {
         applicationId "com.xloger.kanzhihu.app"
         minSdkVersion 14
@@ -23,16 +30,19 @@ android {
         versionCode 1
         versionName "1.0"
     }
-
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_6
         targetCompatibility JavaVersion.VERSION_1_6
     }
     buildTypes {
         release {
-            minifyEnabled false
+            minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.xloger_company
         }
+    }
+    lintOptions {
+        abortOnError false
     }
 }
 

@@ -10,6 +10,13 @@ import java.util.List;
  * Author:xloger
  * Email:phoenix@xloger.com
  */
+
+/**
+ * 基础适配器<br/>
+ * 使用方法：继承AbstractAdapter并指定List的类型<br/>
+ * 只需要实现getView()方法即可
+ * @param <T>
+ */
 public abstract class AbstractAdapter<T> extends BaseAdapter {
     protected Context context;
     protected List<T> list;

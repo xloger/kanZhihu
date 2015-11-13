@@ -24,11 +24,25 @@ public class CacheTool {
 
     }
 
+    /**
+     * 自动实现图片加载缓存<br/>
+     * 默认宽高150px
+     * @param view 需要加载图片的控件
+     * @param url 图片Url
+     */
     public static void cacheImage(final View view, final String url){
         cacheImage(view,url,150,150);
     }
 
+    /**
+     * 自动实现图片加载缓存<br/>
+     * @param view 需要加载图片的控件
+     * @param url 图片Url
+     * @param toWidth 展示的宽度 px
+     * @param toHeight 展示的高度 px
+     */
     public static void cacheImage(final View view, final String url, final int toWidth, final int toHeight){
+        view.setTag(url);
         Bitmap bitmap=null;
         ImageCache imageCache = ImageCache.getInstance();
         bitmap = imageCache.get(url);
@@ -36,7 +50,6 @@ public class CacheTool {
             FileCache fileCache = FileCache.getInstance();
             byte[] bytes = fileCache.load(url);
             if (bytes == null||bytes.length==0) {
-//                view.setTag(url);
                 SimpleTask task=new SimpleTask(new TaskCallBack() {
                     @Override
                     public void onTaskFinish(TaskResult taskResult) {

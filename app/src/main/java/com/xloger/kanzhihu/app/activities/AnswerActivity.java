@@ -12,6 +12,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
+import android.widget.Toast;
 import com.xloger.kanzhihu.app.Constants;
 import com.xloger.kanzhihu.app.R;
 import com.xloger.kanzhihu.app.adapter.AnswerAdapter;
@@ -107,7 +108,7 @@ public class AnswerActivity extends Activity implements TaskCallBack {
         if (answers != null) {
             answerList.addAll(answers);
             answerAdapter.notifyDataSetChanged();
-
+            Toast.makeText(this,"数据更新",Toast.LENGTH_SHORT).show();
         }
     }
 

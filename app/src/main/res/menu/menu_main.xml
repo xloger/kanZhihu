@@ -15,13 +15,13 @@
             android:title="设置"
             android:icon="@mipmap/ic_launcher"
             android:orderInCategory="100"
-            app:showAsAction="always"/>
+            app:showAsAction="never"/>
 
       <item android:id="@+id/main_about"
             android:title="关于"
             android:icon="@mipmap/ic_launcher"
             android:orderInCategory="101"
-            app:showAsAction="always"/>
+            app:showAsAction="never"/>
 
 
 
