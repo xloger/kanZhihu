@@ -68,7 +68,7 @@ public class MainActivity extends FragmentActivity implements TaskCallBack, Swip
         showPostsTask.execute();
 
 
-        setOverflowShowingAlways();
+//        setOverflowShowingAlways();
 
     }
 

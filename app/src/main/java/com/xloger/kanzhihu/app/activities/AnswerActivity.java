@@ -5,6 +5,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
 import android.support.v4.app.FragmentActivity;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -18,6 +19,7 @@ import com.xloger.kanzhihu.app.R;
 import com.xloger.kanzhihu.app.adapter.AnswerAdapter;
 import com.xloger.kanzhihu.app.client.JsonClient;
 import com.xloger.kanzhihu.app.entities.Answer;
+import com.xloger.kanzhihu.app.sql.ReadDB;
 import com.xloger.kanzhihu.app.tasks.ShowAnswersTask;
 import com.xloger.kanzhihu.app.tasks.TaskCallBack;
 import com.xloger.kanzhihu.app.tasks.TaskResult;
@@ -29,30 +31,39 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
-public class AnswerActivity extends Activity implements TaskCallBack {
+public class AnswerActivity extends Activity implements TaskCallBack, SwipeRefreshLayout.OnRefreshListener {
 
     private RecyclerView recyclerView;
     private List<Answer> answerList;
     private AnswerAdapter answerAdapter;
     private ShowAnswersTask task;
+    private SwipeRefreshLayout swipeRefreshLayout;
+    private String date;
+    private String name;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_answer);
 
+        swipeRefreshLayout = (SwipeRefreshLayout) findViewById(R.id.answer_swipe_refresh_layout);
+
+        //设置SwipeRefreshLayout
+        swipeRefreshLayout.setColorSchemeResources(R.color.theme);
+        swipeRefreshLayout.setOnRefreshListener(this);
+
         recyclerView = (RecyclerView) findViewById(R.id.answer_recycler_view);
 
         //获取传过来的启动参数
         Bundle bundle=getIntent().getExtras();
-        String date=bundle.getString("date");
-        String name=bundle.getString("name");
+        date = bundle.getString("date");
+        name = bundle.getString("name");
 
         //启动异步任务加载内容
         task = new ShowAnswersTask(this);
         Map<String,String> map=new HashMap<String, String>();
-        map.put("date",date);
-        map.put("name",name);
+        map.put("date", date);
+        map.put("name", name);
         task.execute(map);
 
         //配置RecyclerView
@@ -106,10 +117,12 @@ public class AnswerActivity extends Activity implements TaskCallBack {
         JSONObject jsonObject= (JSONObject) taskResult.data;
         List<Answer> answers = JsonClient.parseAnswer(jsonObject);
         if (answers != null) {
+            answerList.clear();
             answerList.addAll(answers);
             answerAdapter.notifyDataSetChanged();
-            Toast.makeText(this,"数据更新",Toast.LENGTH_SHORT).show();
         }
+        swipeRefreshLayout.setRefreshing(false);
+        onRead();
     }
 
     /**
@@ -127,6 +140,20 @@ public class AnswerActivity extends Activity implements TaskCallBack {
             startActivity(intent);
         }
     };
+
+    @Override
+    public void onRefresh() {
+        task = new ShowAnswersTask(this);
+        Map<String,String> map=new HashMap<String, String>();
+        map.put("date",date);
+        map.put("name",name);
+        task.execute(map);
+    }
+
+    private void onRead(){
+        ReadDB readDB=new ReadDB(getApplicationContext());
+        readDB.setRead(date,name);
+    }
 
     /**
      * 点击事件的回调接口

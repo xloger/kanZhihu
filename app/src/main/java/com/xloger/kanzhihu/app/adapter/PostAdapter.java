@@ -6,12 +6,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.xloger.kanzhihu.app.Constants;
 import com.xloger.kanzhihu.app.R;
 import com.xloger.kanzhihu.app.activities.MainActivity;
 import com.xloger.kanzhihu.app.entities.Post;
+import com.xloger.kanzhihu.app.sql.ReadDB;
 
 import java.util.HashMap;
 import java.util.List;
@@ -26,10 +28,12 @@ public class PostAdapter extends AbstractAdapter<Post> {
 
     private final Map<String, String> map= Constants.nameMap;
     private MainActivity.MainClickCallBack clickCallBack;
+    private final ReadDB readDB;
 
     public PostAdapter(Context context, List<Post> list,MainActivity.MainClickCallBack clickCallBack) {
         super(context, list);
         this.clickCallBack=clickCallBack;
+        readDB = new ReadDB(context);
 
     }
 
@@ -48,8 +52,9 @@ public class PostAdapter extends AbstractAdapter<Post> {
             holder.date= (TextView) view.findViewById(R.id.item_post_date);
             holder.name= (TextView) view.findViewById(R.id.item_post_name);
             holder.excerpt= (TextView) view.findViewById(R.id.item_post_excerpt);
-            holder.click= (LinearLayout) view.findViewById(R.id.item_post_click);
+            holder.click= (RelativeLayout) view.findViewById(R.id.item_post_click);
             holder.cardView=(CardView)view.findViewById(R.id.item_post_card_view);
+            holder.readTag=(TextView)view.findViewById(R.id.item_post_read_tag);
         }else {
             holder= (ViewHolder) view.getTag();
         }
@@ -76,6 +81,14 @@ public class PostAdapter extends AbstractAdapter<Post> {
             }
         });
 
+        //未读标识
+        String date=getItem(position).getDate();
+        date=date.replaceAll("-","");
+        boolean isRead = readDB.isRead(date, getItem(position).getName());
+        holder.readTag.setVisibility(View.VISIBLE);
+        if (isRead){
+            holder.readTag.setVisibility(View.INVISIBLE);
+        }
 
         return view;
     }
@@ -84,7 +97,8 @@ public class PostAdapter extends AbstractAdapter<Post> {
         public TextView date;
         public TextView name;
         public TextView excerpt;
-        public LinearLayout click;
+        public RelativeLayout click;
         public CardView cardView;
+        public TextView readTag;
     }
 }

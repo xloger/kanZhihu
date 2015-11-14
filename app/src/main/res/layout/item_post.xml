@@ -26,11 +26,10 @@
             app:cardElevation="2dp"
             >
 
-        <LinearLayout
+        <RelativeLayout
                 android:id="@+id/item_post_click"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
                 android:background="@drawable/item_click"
                 android:padding="16dp"
                 android:clickable="false"
@@ -39,23 +38,31 @@
                     android:id="@+id/item_post_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginRight="8dp"
                     android:layout_gravity="center_vertical"
                     android:textSize="20sp"
                     android:textColor="@color/theme"
                     android:text="昨日最新"
                     />
             <TextView
+                    android:id="@+id/item_post_read_tag"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@id/item_post_name"
+                    android:textColor="#F00"
+                    android:text="未读"
+                    />
+            <TextView
                     android:id="@+id/item_post_excerpt"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_below="@id/item_post_name"
                     android:maxLines="5"
                     android:ellipsize="end"
                     android:textSize="16sp"
                     android:textColor="@color/text_two"
                     android:text="内容简介"
                     />
-        </LinearLayout>
+        </RelativeLayout>
 
     </android.support.v7.widget.CardView>
 
