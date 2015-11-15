@@ -23,6 +23,7 @@ import com.xloger.kanzhihu.app.sql.ReadDB;
 import com.xloger.kanzhihu.app.tasks.ShowAnswersTask;
 import com.xloger.kanzhihu.app.tasks.TaskCallBack;
 import com.xloger.kanzhihu.app.tasks.TaskResult;
+import com.xloger.kanzhihu.app.utils.ConfigUtil;
 import com.xloger.kanzhihu.app.utils.MyLog;
 import org.json.JSONObject;
 
@@ -133,11 +134,20 @@ public class AnswerActivity extends Activity implements TaskCallBack, SwipeRefre
         public void onClick(Answer answer) {
             String url= Constants.ZHIHU_URL+"question/"+answer.getQuestionid()+"/answer/"+answer.getAnswerid();
             MyLog.d(url);
-            Uri uri=Uri.parse(url);
-            Intent intent=new Intent();
-            intent.setAction(Intent.ACTION_VIEW);
-            intent.setData(uri);
-            startActivity(intent);
+            boolean isOpenUrl = ConfigUtil.newInstance().getIsOpenUrl();
+            if (isOpenUrl){ //通过Url打开App
+                Uri uri=Uri.parse(url);
+                Intent intent=new Intent();
+                intent.setAction(Intent.ACTION_VIEW);
+                intent.setData(uri);
+                startActivity(intent);
+            }else { //通过内置浏览器打开
+                Intent intent=new Intent(AnswerActivity.this,WebActivity.class);
+                intent.putExtra("title",answer.getTitle());
+                intent.putExtra("url",url);
+                startActivity(intent);
+            }
+
         }
     };
 

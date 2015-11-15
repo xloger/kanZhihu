@@ -124,7 +124,8 @@ public class MainActivity extends FragmentActivity implements TaskCallBack, Swip
     }
 
     private void openSettings(){
-
+        Intent intent=new Intent(this,SettingActivity.class);
+        startActivity(intent);
     }
 
     private void openAbout(){
