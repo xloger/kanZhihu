@@ -7,7 +7,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 import com.xloger.kanzhihu.app.R;
 import com.xloger.kanzhihu.app.activities.AnswerActivity;

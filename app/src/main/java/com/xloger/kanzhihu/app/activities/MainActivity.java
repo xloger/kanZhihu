@@ -2,8 +2,6 @@ package com.xloger.kanzhihu.app.activities;
 
 import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
-import android.app.ActionBar;
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
@@ -13,7 +11,6 @@ import android.os.Bundle;
 import android.view.*;
 import android.widget.AbsListView;
 import android.widget.ListView;
-import android.widget.TextView;
 import android.widget.Toast;
 import com.xloger.kanzhihu.app.Constants;
 import com.xloger.kanzhihu.app.R;
@@ -23,11 +20,9 @@ import com.xloger.kanzhihu.app.entities.Post;
 import com.xloger.kanzhihu.app.tasks.ShowPostsTask;
 import com.xloger.kanzhihu.app.tasks.TaskCallBack;
 import com.xloger.kanzhihu.app.tasks.TaskResult;
-import com.xloger.kanzhihu.app.utils.MyLog;
 import org.json.JSONObject;
 
 import java.lang.reflect.Field;
-import java.security.Timestamp;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;

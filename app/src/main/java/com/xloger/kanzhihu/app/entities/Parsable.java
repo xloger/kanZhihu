@@ -1,6 +1,5 @@
 package com.xloger.kanzhihu.app.entities;
 
-import android.database.Cursor;
 import org.json.JSONException;
 import org.json.JSONObject;
 

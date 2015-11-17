@@ -33,8 +33,10 @@ public class ReadDB {
         SQLiteDatabase database = dbHelper.getReadableDatabase();
         Cursor cursor=database.rawQuery("select * from Reader where date = ? and name = ?", new String[]{date, name});
         if (cursor.getCount()==0){
+            cursor.close();
             return false;
         }else {
+            cursor.close();
             return true;
         }
     }

@@ -5,17 +5,14 @@ import android.support.v7.widget.CardView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 import com.xloger.kanzhihu.app.Constants;
 import com.xloger.kanzhihu.app.R;
 import com.xloger.kanzhihu.app.activities.MainActivity;
 import com.xloger.kanzhihu.app.entities.Post;
 import com.xloger.kanzhihu.app.sql.ReadDB;
 
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 

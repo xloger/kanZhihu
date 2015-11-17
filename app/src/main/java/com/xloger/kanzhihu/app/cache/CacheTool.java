@@ -3,7 +3,6 @@ package com.xloger.kanzhihu.app.cache;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
-import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import com.xloger.kanzhihu.app.Constants;
@@ -11,7 +10,6 @@ import com.xloger.kanzhihu.app.tasks.SimpleTask;
 import com.xloger.kanzhihu.app.tasks.TaskCallBack;
 import com.xloger.kanzhihu.app.tasks.TaskResult;
 import com.xloger.kanzhihu.app.utils.MyLog;
-import com.xloger.kanzhihu.app.utils.StreamUtil;
 
 /**
  * Created by xloger on 2015/11/4.

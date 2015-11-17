@@ -4,8 +4,6 @@ import android.os.AsyncTask;
 import com.xloger.kanzhihu.app.Constants;
 import com.xloger.kanzhihu.app.utils.HttpUtil;
 
-import java.util.Map;
-
 /**
  * Created by xloger on 2015/11/4.
  * Author:xloger
