@@ -9,7 +9,6 @@ import android.content.Intent;
 import android.os.Build;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.widget.SwipeRefreshLayout;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.*;
 import android.widget.AbsListView;

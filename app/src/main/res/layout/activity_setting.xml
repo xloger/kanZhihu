@@ -9,7 +9,7 @@
             android:id="@+id/setting_open_check"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="使用内置浏览器打开答案详情（未装知乎App的用户酌情选择）"
+            android:text="使用内置浏览器打开答案详情（未装知乎App的用户使用）"
             />
 
 </LinearLayout>
