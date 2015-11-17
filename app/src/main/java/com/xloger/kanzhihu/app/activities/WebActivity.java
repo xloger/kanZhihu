@@ -56,6 +56,18 @@ public class WebActivity extends Activity {
             Intent shareIntent=new Intent(Intent.ACTION_SEND);
             shareIntent.setType("text/plain");
             shareIntent.putExtra(Intent.EXTRA_TEXT,"Hello world");
+
+            ShareActionProvider.OnShareTargetSelectedListener listener = new ShareActionProvider.OnShareTargetSelectedListener() {
+                public boolean onShareTargetSelected(
+                        ShareActionProvider source, Intent intent) {
+                    startActivity(intent);
+                    return true;
+                }
+            };
+            shareProvider.setShareHistoryFileName(null);
+            shareProvider.setOnShareTargetSelectedListener(listener);
+
+
             shareProvider.setShareIntent(shareIntent);
         }
 
