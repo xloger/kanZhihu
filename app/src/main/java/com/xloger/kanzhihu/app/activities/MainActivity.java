@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.view.*;
 import android.widget.AbsListView;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 import com.xloger.kanzhihu.app.Constants;
 import com.xloger.kanzhihu.app.R;
@@ -35,6 +36,7 @@ public class MainActivity extends FragmentActivity implements TaskCallBack, Swip
     private PostAdapter adapter;
     private Context context;
     private SwipeRefreshLayout swipeRefreshLayout;
+    private ListView listView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,7 +45,7 @@ public class MainActivity extends FragmentActivity implements TaskCallBack, Swip
         context = this;
 
         //初始化控件
-        ListView listView= (ListView) findViewById(R.id.main_list_view);
+        listView = (ListView) findViewById(R.id.main_list_view);
         swipeRefreshLayout = (SwipeRefreshLayout) findViewById(R.id.main_swipe_refresh_layout);
 
         //设置SwipeRefreshLayout
@@ -63,6 +65,7 @@ public class MainActivity extends FragmentActivity implements TaskCallBack, Swip
 
 
 //        setOverflowShowingAlways();
+
 
     }
 
@@ -114,7 +117,7 @@ public class MainActivity extends FragmentActivity implements TaskCallBack, Swip
 
         String tempName[]=new String[]{"yesterday","recent","archive"};
         String name=tempName[((int) (Math.random() * 3))];
-        openAnswer(date,name);
+        openAnswer(-1,date,name);
     }
 
     private void openSettings(){
@@ -196,24 +199,48 @@ public class MainActivity extends FragmentActivity implements TaskCallBack, Swip
     private MainClickCallBack clickCallBack=new MainClickCallBack() {
         @SuppressLint("NewApi")
         @Override
-        public void onClick(Post post) {
+        public void onClick(int position,Post post) {
             String date=post.getDate();
             String name=post.getName();
 
-            openAnswer(date,name);
+            openAnswer(position,date,name);
 
         }
     };
 
     @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
-    private void openAnswer(String date,String name){
+    private void openAnswer(int position,String date,String name){
         date=date.replaceAll("-","");
         Bundle bundle=new Bundle();
         bundle.putString("date",date);
         bundle.putString("name",name);
+        bundle.putInt("position",position);
         Intent intent=new Intent(context,AnswerActivity.class);
         intent.putExtras(bundle);
-        this.startActivity(intent, bundle);
+//        this.startActivity(intent, bundle);
+        this.startActivityForResult(intent,Constants.ACTION_ANSWER_RESULT,bundle);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (resultCode==Constants.ACTION_ANSWER_RESULT){
+            int result_id = data.getIntExtra("result_id",-1);
+            int firstVisiblePosition = listView.getFirstVisiblePosition();
+            int lastVisiblePosition = listView.getLastVisiblePosition();
+            if(result_id>=firstVisiblePosition && result_id<=lastVisiblePosition) {
+                View childAt = listView.getChildAt(result_id - firstVisiblePosition);
+                if (childAt != null) {
+                    TextView readTag = (TextView) childAt.findViewById(R.id.item_post_read_tag);
+                    if (readTag != null) {
+                        readTag.setVisibility(View.INVISIBLE);
+                    }
+                }
+            }
+
+
+
+        }
     }
 
     /**
@@ -273,6 +300,6 @@ public class MainActivity extends FragmentActivity implements TaskCallBack, Swip
      * item点击事件所需要的回调接口
      */
     public interface MainClickCallBack{
-        void onClick(Post post);
+        void onClick(int position,Post post);
     }
 }

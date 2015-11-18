@@ -36,6 +36,7 @@ public class AnswerActivity extends Activity implements TaskCallBack, SwipeRefre
     private SwipeRefreshLayout swipeRefreshLayout;
     private String date;
     private String name;
+    private int position;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,6 +55,7 @@ public class AnswerActivity extends Activity implements TaskCallBack, SwipeRefre
         Bundle bundle=getIntent().getExtras();
         date = bundle.getString("date");
         name = bundle.getString("name");
+        position=bundle.getInt("position");
 
         //启动异步任务加载内容
         task = new ShowAnswersTask(this);
@@ -159,6 +161,14 @@ public class AnswerActivity extends Activity implements TaskCallBack, SwipeRefre
     private void onRead(){
         ReadDB readDB=new ReadDB(getApplicationContext());
         readDB.setRead(date,name);
+    }
+
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent();
+        intent.putExtra("result_id",position);
+        setResult(Constants.ACTION_ANSWER_RESULT,intent);
+        super.onBackPressed();
     }
 
     /**

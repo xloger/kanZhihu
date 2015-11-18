@@ -74,7 +74,7 @@ public class PostAdapter extends AbstractAdapter<Post> {
         holder.cardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                clickCallBack.onClick(getItem(position));
+                clickCallBack.onClick(position,getItem(position));
             }
         });
 

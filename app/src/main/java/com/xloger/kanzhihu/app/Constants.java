@@ -19,6 +19,8 @@ public class Constants {
     public static final int ACTION_POSTS_REFRESH=10088;
     public static final int ACTION_POSTS_MORE=10089;
 
+    public static final int ACTION_ANSWER_RESULT=10090;
+
     public static final Map<String,String> nameMap;
 
     static {
