@@ -14,6 +14,9 @@ import com.xloger.kanzhihu.app.R;
 public class WebActivity extends Activity {
 
     private WebView webView;
+    private String title;
+    private String url;
+    private String summary;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,8 +25,9 @@ public class WebActivity extends Activity {
         webView = (WebView) findViewById(R.id.web_view);
 
         Intent intent = getIntent();
-        String title=intent.getStringExtra("title");
-        String url=intent.getStringExtra("url");
+        title = intent.getStringExtra("title");
+        summary =intent.getStringExtra("summary");
+        url = intent.getStringExtra("url");
 
         ActionBar actionBar = getActionBar();
         if (actionBar != null) {
@@ -48,24 +52,38 @@ public class WebActivity extends Activity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
+
+        String shareTxt="【"+title+"】"+summary+url+" （本消息来自看知乎App）";
+
         getMenuInflater().inflate(R.menu.menu_web,menu);
         MenuItem shareItem=menu.findItem(R.id.web_share);
         if (shareItem != null) {
-            ShareActionProvider shareProvider = (ShareActionProvider)shareItem.getActionProvider();
 
             Intent shareIntent=new Intent(Intent.ACTION_SEND);
             shareIntent.setType("text/plain");
-            shareIntent.putExtra(Intent.EXTRA_TEXT,"Hello world");
+            shareIntent.putExtra(Intent.EXTRA_TEXT,shareTxt);
 
-            ShareActionProvider.OnShareTargetSelectedListener listener = new ShareActionProvider.OnShareTargetSelectedListener() {
-                public boolean onShareTargetSelected(
-                        ShareActionProvider source, Intent intent) {
-                    startActivity(intent);
-                    return true;
-                }
-            };
-            shareProvider.setShareHistoryFileName(null);
-            shareProvider.setOnShareTargetSelectedListener(listener);
+            //1.普通分享模式
+//            startActivity(shareIntent);
+
+            /*
+            在设置隐藏分享历史的时候遇到一个报错：No preceding call to #readHistoricalData
+            查询资料后未解决，故不隐藏。
+            参考资料：http://stackoverflow.com/questions/15755465/how-to-hide-the-share-action-which-use-most-icon-near-the-share-action-provide/17290249#17290249
+            http://stackoverflow.com/questions/13395601/android-shareactionprovider-with-no-history
+             */
+
+            //2.系统自带的分享模块
+            ShareActionProvider shareProvider = (ShareActionProvider)shareItem.getActionProvider();
+//            ShareActionProvider.OnShareTargetSelectedListener listener = new ShareActionProvider.OnShareTargetSelectedListener() {
+//                public boolean onShareTargetSelected(
+//                        ShareActionProvider source, Intent intent) {
+//                    startActivity(intent);
+//                    return true;
+//                }
+//            };
+//            shareProvider.setShareHistoryFileName(null);
+//            shareProvider.setOnShareTargetSelectedListener(listener);
 
 
             shareProvider.setShareIntent(shareIntent);

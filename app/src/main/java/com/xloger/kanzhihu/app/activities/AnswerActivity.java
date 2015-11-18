@@ -139,6 +139,7 @@ public class AnswerActivity extends Activity implements TaskCallBack, SwipeRefre
             }else { //通过内置浏览器打开
                 Intent intent=new Intent(AnswerActivity.this,WebActivity.class);
                 intent.putExtra("title",answer.getTitle());
+                intent.putExtra("summary",answer.getSummary());
                 intent.putExtra("url",url);
                 startActivity(intent);
             }
