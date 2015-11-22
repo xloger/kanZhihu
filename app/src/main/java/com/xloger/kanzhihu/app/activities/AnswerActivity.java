@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.MenuItem;
+import android.widget.Toast;
 import com.xloger.kanzhihu.app.Constants;
 import com.xloger.kanzhihu.app.R;
 import com.xloger.kanzhihu.app.adapter.AnswerAdapter;
@@ -118,6 +119,8 @@ public class AnswerActivity extends Activity implements TaskCallBack, SwipeRefre
             answerList.clear();
             answerList.addAll(answers);
             answerAdapter.notifyDataSetChanged();
+        }else {
+            Toast.makeText(this,"加载超时，请重试",Toast.LENGTH_SHORT).show();
         }
         swipeRefreshLayout.setRefreshing(false);
         onRead();

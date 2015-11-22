@@ -2,6 +2,7 @@ package com.xloger.kanzhihu.app.activities;
 
 import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
@@ -30,7 +31,7 @@ import java.text.SimpleDateFormat;
 import java.util.*;
 
 
-public class MainActivity extends FragmentActivity implements TaskCallBack, SwipeRefreshLayout.OnRefreshListener {
+public class MainActivity extends Activity implements TaskCallBack, SwipeRefreshLayout.OnRefreshListener {
 
     private List<Post> postList;
     private PostAdapter adapter;
@@ -208,6 +209,9 @@ public class MainActivity extends FragmentActivity implements TaskCallBack, Swip
         }
     };
 
+    /**
+     * 启动答案页，并传入需要的参数
+     */
     @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
     private void openAnswer(int position,String date,String name){
         date=date.replaceAll("-","");
@@ -221,6 +225,9 @@ public class MainActivity extends FragmentActivity implements TaskCallBack, Swip
         this.startActivityForResult(intent,Constants.ACTION_ANSWER_RESULT,bundle);
     }
 
+    /**
+     * 答案页返回后产生的回调，用于局部刷新消除“未读”标记
+     */
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -280,8 +287,9 @@ public class MainActivity extends FragmentActivity implements TaskCallBack, Swip
     };
 
 
-
-
+    /**
+     * 通过反射，强制显示Overflow（即右上角的菜单按钮）
+     */
     private void setOverflowShowingAlways() {
         try {
             ViewConfiguration config = ViewConfiguration.get(this);
