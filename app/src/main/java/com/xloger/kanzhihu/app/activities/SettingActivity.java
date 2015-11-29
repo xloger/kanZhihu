@@ -1,5 +1,6 @@
 package com.xloger.kanzhihu.app.activities;
 
+import android.app.ActionBar;
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
@@ -13,6 +14,12 @@ public class SettingActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_setting);
+
+        ActionBar actionBar = getActionBar();
+        if (actionBar != null) {
+            actionBar.setDisplayShowHomeEnabled(false);
+        }
+
         final ConfigUtil configUtil = ConfigUtil.newInstance();
 
         final CheckBox openCheck= (CheckBox) findViewById(R.id.setting_open_check);

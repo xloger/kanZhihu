@@ -2,6 +2,7 @@ package com.xloger.kanzhihu.app.activities;
 
 import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
+import android.app.ActionBar;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -44,6 +45,12 @@ public class MainActivity extends Activity implements TaskCallBack, SwipeRefresh
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         context = this;
+
+        ActionBar actionBar = getActionBar();
+        if (actionBar != null) {
+            actionBar.setDisplayShowHomeEnabled(false);
+        }
+
 
         //初始化控件
         listView = (ListView) findViewById(R.id.main_list_view);
@@ -127,7 +134,8 @@ public class MainActivity extends Activity implements TaskCallBack, SwipeRefresh
     }
 
     private void openAbout(){
-
+        Intent intent=new Intent(this,AboutActivity.class);
+        startActivity(intent);
     }
 
     /**

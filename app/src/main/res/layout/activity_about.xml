@@ -1,0 +1,44 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+              android:orientation="vertical"
+              android:divider="@drawable/divider"
+              android:showDividers="middle"
+                tools:context="com.xloger.kanzhihu.app.activities.AboutActivity">
+
+    <TextView
+            android:text="本应用为kzhihu.com的安卓App，内容皆为知乎网所提供，此应用仅提供入口。版权归原作者所有。"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:autoLink="email|phone|web"
+            />
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="看知乎App为你提供知乎网的精选内容，摒除一些糟粕让你不再拥有筛选低质量内容的烦恼，相比知乎日报提供更多优质内容，不再有不够看的困恼"
+            />
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="早中晚，每天三次，给你一个优质的 TimeLine "
+            />
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="数据源为知乎@苏莉安 提供，该应用由xloger开发 \n关于内容的建议请反馈至 http://www.kanzhihu.com/messageboard \n关于应用的建议请反馈至邮箱：phoenix@xloger.com"
+            android:autoLink="email|phone|web"
+            />
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="文案什么的，我真的很无力啦Orz"
+            />
+    <TextView
+            android:id="@+id/versions"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="版本号：1.0"
+            />
+
+</LinearLayout>
