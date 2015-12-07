@@ -219,6 +219,9 @@ public class MainActivity extends Activity implements TaskCallBack, SwipeRefresh
 
     /**
      * 启动答案页，并传入需要的参数
+     * @param position
+     * @param date
+     * @param name
      */
     @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
     private void openAnswer(int position,String date,String name){

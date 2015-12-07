@@ -10,10 +10,8 @@
             android:id="@+id/main_list_view"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="8dp"
-            android:layout_marginRight="8dp"
             android:divider="#0FFF"
-            android:dividerHeight="8dp"
+            android:dividerHeight="@dimen/card_margin"
             />
 
 </android.support.v4.widget.SwipeRefreshLayout>

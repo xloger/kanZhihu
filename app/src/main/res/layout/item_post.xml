@@ -12,6 +12,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
+            android:layout_marginLeft="@dimen/card_margin"
             android:textSize="20sp"
             android:visibility="gone"
             android:clickable="false"
@@ -21,7 +22,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:clickable="true"
-            android:layout_margin="4dp"
+            android:layout_marginLeft="@dimen/card_margin"
+            android:layout_marginRight="@dimen/card_margin"
             android:foreground="?android:attr/selectableItemBackground"
             app:cardElevation="2dp"
             >
@@ -31,7 +33,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/item_click"
-                android:padding="16dp"
+                android:padding="@dimen/card_padding"
                 android:clickable="false"
                 >
             <TextView
@@ -39,6 +41,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
+                    android:layout_marginBottom="@dimen/card_divider"
                     android:textSize="20sp"
                     android:textColor="@color/theme"
                     android:text="昨日最新"
