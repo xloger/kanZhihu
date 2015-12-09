@@ -50,7 +50,11 @@ public class AnswerAdapter extends RecyclerView.Adapter<AnswerAdapter.AnswerView
         });
 
         answerViewHolder.author.setText(answerList.get(i).getAuthorname());
-        answerViewHolder.vote.setText(answerList.get(i).getVote()+"");
+        String voteString=answerList.get(i).getVote()+"";
+        if (answerList.get(i).getVote()/10000>0) {
+            voteString=answerList.get(i).getVote()/1000+"k";
+        }
+        answerViewHolder.vote.setText(voteString);
 
         //TODO 设置默认头像
         answerViewHolder.avatar.setTag(answerList.get(i).getAvatar());
