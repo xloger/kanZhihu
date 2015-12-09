@@ -62,4 +62,12 @@
     </style>
 
 
+
+    <style name="text_shadow">
+        <item name="android:shadowColor">@color/text_three</item>
+        <item name="android:shadowDx">1</item>
+        <item name="android:shadowDy">1</item>
+        <item name="android:shadowRadius">1</item>
+    </style>
+
 </resources>
