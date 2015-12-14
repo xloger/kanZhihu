@@ -5,6 +5,7 @@
               android:orientation="vertical"
               android:divider="@drawable/divider"
               android:showDividers="middle"
+              android:padding="10dp"
                 tools:context="com.xloger.kanzhihu.app.activities.AboutActivity">
 
     <TextView

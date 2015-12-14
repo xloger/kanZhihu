@@ -28,6 +28,7 @@
             android:layout_marginRight="@dimen/card_margin"
             android:foreground="?android:attr/selectableItemBackground"
             app:cardElevation="2dp"
+            app:cardUseCompatPadding="true"
             >
 
         <RelativeLayout

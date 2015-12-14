@@ -10,6 +10,7 @@
         android:layout_marginRight="@dimen/card_margin"
         android:clickable="true"
         android:foreground="?android:attr/selectableItemBackground"
+        app:cardUseCompatPadding="true"
         app:cardElevation="2dp"
         >
     <LinearLayout
