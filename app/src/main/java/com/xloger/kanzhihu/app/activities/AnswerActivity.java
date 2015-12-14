@@ -1,11 +1,13 @@
 package com.xloger.kanzhihu.app.activities;
 
-import android.app.ActionBar;
+
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.os.Bundle;
+import android.support.v7.app.ActionBar;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.MenuItem;
@@ -28,7 +30,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
-public class AnswerActivity extends Activity implements TaskCallBack, SwipeRefreshLayout.OnRefreshListener {
+public class AnswerActivity extends BaseActivity implements TaskCallBack, SwipeRefreshLayout.OnRefreshListener {
 
     private RecyclerView recyclerView;
     private List<Answer> answerList;
@@ -73,7 +75,7 @@ public class AnswerActivity extends Activity implements TaskCallBack, SwipeRefre
 
         Map<String, String> mapName = Constants.nameMap;
 
-        ActionBar actionBar = getActionBar();
+        ActionBar actionBar = getSupportActionBar();
         if (actionBar != null) {
             actionBar.setDisplayHomeAsUpEnabled(true);
             actionBar.setDisplayShowHomeEnabled(false);
@@ -180,4 +182,5 @@ public class AnswerActivity extends Activity implements TaskCallBack, SwipeRefre
     public interface OpenLinkCallBack{
         void onClick(Answer answer);
     }
+
 }

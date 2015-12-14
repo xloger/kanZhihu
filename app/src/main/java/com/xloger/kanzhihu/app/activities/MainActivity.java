@@ -10,6 +10,8 @@ import android.os.Build;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.*;
 import android.widget.AbsListView;
 import android.widget.ListView;
@@ -32,7 +34,7 @@ import java.text.SimpleDateFormat;
 import java.util.*;
 
 
-public class MainActivity extends Activity implements TaskCallBack, SwipeRefreshLayout.OnRefreshListener {
+public class MainActivity extends BaseActivity implements TaskCallBack, SwipeRefreshLayout.OnRefreshListener {
 
     private List<Post> postList;
     private PostAdapter adapter;
@@ -46,10 +48,11 @@ public class MainActivity extends Activity implements TaskCallBack, SwipeRefresh
         setContentView(R.layout.activity_main);
         context = this;
 
-        ActionBar actionBar = getActionBar();
-        if (actionBar != null) {
-            actionBar.setDisplayShowHomeEnabled(false);
-        }
+
+//        ActionBar actionBar = getActionBar();
+//        if (actionBar != null) {
+//            actionBar.setDisplayShowHomeEnabled(false);
+//        }
 
 
         //初始化控件

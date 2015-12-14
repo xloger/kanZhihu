@@ -1,18 +1,19 @@
 package com.xloger.kanzhihu.app.activities;
 
-import android.app.ActionBar;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.view.MenuItemCompat;
+import android.support.v7.app.ActionBar;
+import android.support.v7.widget.ShareActionProvider;
 import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
-import android.widget.ShareActionProvider;
 import com.xloger.kanzhihu.app.R;
 
-public class WebActivity extends Activity {
+public class WebActivity extends BaseActivity {
 
     private WebView webView;
     private String title;
@@ -30,7 +31,7 @@ public class WebActivity extends Activity {
         summary =intent.getStringExtra("summary");
         url = intent.getStringExtra("url");
 
-        ActionBar actionBar = getActionBar();
+        ActionBar actionBar = getSupportActionBar();
         if (actionBar != null) {
             actionBar.setTitle(title);
             actionBar.setDisplayHomeAsUpEnabled(true);
@@ -60,12 +61,18 @@ public class WebActivity extends Activity {
         MenuItem shareItem=menu.findItem(R.id.web_share);
         if (shareItem != null) {
 
-            Intent shareIntent=new Intent(Intent.ACTION_SEND);
+            final Intent shareIntent=new Intent(Intent.ACTION_SEND);
             shareIntent.setType("text/plain");
             shareIntent.putExtra(Intent.EXTRA_TEXT,shareTxt);
 
             //1.普通分享模式
-//            startActivity(shareIntent);
+            shareItem.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+                @Override
+                public boolean onMenuItemClick(MenuItem item) {
+                    startActivity(Intent.createChooser(shareIntent, "分享到："));
+                    return true;
+                }
+            });
 
             /*
             在设置隐藏分享历史的时候遇到一个报错：No preceding call to #readHistoricalData
@@ -75,7 +82,8 @@ public class WebActivity extends Activity {
              */
 
             //2.系统自带的分享模块
-            ShareActionProvider shareProvider = (ShareActionProvider)shareItem.getActionProvider();
+//            ShareActionProvider shareProvider = (ShareActionProvider)shareItem.getActionProvider();
+//            ShareActionProvider shareProvider = (ShareActionProvider)MenuItemCompat.getActionProvider(shareItem);
 //            ShareActionProvider.OnShareTargetSelectedListener listener = new ShareActionProvider.OnShareTargetSelectedListener() {
 //                public boolean onShareTargetSelected(
 //                        ShareActionProvider source, Intent intent) {
@@ -87,7 +95,9 @@ public class WebActivity extends Activity {
 //            shareProvider.setOnShareTargetSelectedListener(listener);
 
 
-            shareProvider.setShareIntent(shareIntent);
+//            if (shareProvider != null) {
+//                shareProvider.setShareIntent(shareIntent);
+//            }
         }
 
         return true;

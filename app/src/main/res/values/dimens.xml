@@ -4,4 +4,6 @@
     <dimen name="card_divider">8dp</dimen>
 
     <dimen name="action_bar_text_size">22sp</dimen>
+    
+    <dimen name="toolbar_padding_top">0dp</dimen>
 </resources>

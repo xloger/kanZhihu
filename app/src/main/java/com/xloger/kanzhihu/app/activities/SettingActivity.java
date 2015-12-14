@@ -1,21 +1,21 @@
 package com.xloger.kanzhihu.app.activities;
 
-import android.app.ActionBar;
 import android.app.Activity;
 import android.os.Bundle;
+import android.support.v7.app.ActionBar;
 import android.view.View;
 import android.widget.CheckBox;
 import com.xloger.kanzhihu.app.R;
 import com.xloger.kanzhihu.app.utils.ConfigUtil;
 
-public class SettingActivity extends Activity {
+public class SettingActivity extends BaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_setting);
 
-        ActionBar actionBar = getActionBar();
+        ActionBar actionBar = getSupportActionBar();
         if (actionBar != null) {
             actionBar.setDisplayShowHomeEnabled(false);
         }
