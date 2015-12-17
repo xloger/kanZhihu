@@ -75,7 +75,6 @@
     <style name="ThemeOverlay.YourApp" parent="ThemeOverlay.AppCompat.Dark.ActionBar">
         <!--<item name="android:itemBackground">#777</item>-->
         <!--<item name="android:textColor">#000</item>-->
-
     </style>
 
     <style name="test">

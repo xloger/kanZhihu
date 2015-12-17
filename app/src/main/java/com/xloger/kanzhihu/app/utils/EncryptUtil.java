@@ -16,8 +16,6 @@ public class EncryptUtil {
 
     /**
      * 将数组的每个字节，转换成16进制字符串
-     * @param bytes
-     * @return
      */
     public static String toHex(byte[] bytes){
         String ret = null;

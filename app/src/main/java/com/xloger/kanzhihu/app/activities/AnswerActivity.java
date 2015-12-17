@@ -1,12 +1,10 @@
 package com.xloger.kanzhihu.app.activities;
 
 
-import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
-import android.support.v4.widget.SwipeRefreshLayout;
 import android.os.Bundle;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -79,14 +77,14 @@ public class AnswerActivity extends BaseActivity implements TaskCallBack, SwipeR
         if (actionBar != null) {
             actionBar.setDisplayHomeAsUpEnabled(true);
             actionBar.setDisplayShowHomeEnabled(false);
-            DateFormat format1=new SimpleDateFormat("yyyyMMdd");
+            DateFormat format1=new SimpleDateFormat("yyyyMMdd",Locale.getDefault());
             Date titleDate=new Date();
             try {
                 titleDate=format1.parse(date);
             } catch (ParseException e) {
                 e.printStackTrace();
             }
-            DateFormat format2=new SimpleDateFormat("MM月dd日");
+            DateFormat format2=new SimpleDateFormat("MM月dd日",Locale.getDefault());
             String tempDate=format2.format(titleDate);
             String title=tempDate+" "+mapName.get(name);
             actionBar.setTitle(title);

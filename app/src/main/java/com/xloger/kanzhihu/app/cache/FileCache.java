@@ -3,7 +3,6 @@ package com.xloger.kanzhihu.app.cache;
 import android.content.Context;
 import android.os.Environment;
 import com.xloger.kanzhihu.app.utils.EncryptUtil;
-import com.xloger.kanzhihu.app.utils.MyLog;
 import com.xloger.kanzhihu.app.utils.StreamUtil;
 
 import java.io.*;

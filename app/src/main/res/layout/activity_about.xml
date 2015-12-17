@@ -17,17 +17,17 @@
     <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="看知乎App为你提供知乎网的精选内容，摒除一些糟粕让你不再拥有筛选低质量内容的烦恼，相比知乎日报提供更多优质内容，不再有不够看的困恼"
+            android:text="昨日最新、近日热门、历史精华。每天三次，每次二三十条优质内容，让您发现知乎热点、重温经典答案。"
             />
     <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="早中晚，每天三次，给你一个优质的 TimeLine "
+            android:text="相比知乎日报，为您提供更多优质内容；相比知乎，还您一个干干净净的 TimeLine "
             />
     <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="数据源为知乎@苏莉安 提供，该应用由xloger开发 \n关于内容的建议请反馈至 http://www.kanzhihu.com/messageboard \n关于应用的建议请反馈至邮箱：phoenix@xloger.com"
+            android:text="数据源为知乎@苏莉安 提供，该应用由xloger开发 \n关于内容的建议请反馈至 http://www.kanzhihu.com/messageboard \n关于应用的建议请反馈至邮箱：kanzhihu@xloger.com"
             android:autoLink="email|phone|web"
             />
     <TextView

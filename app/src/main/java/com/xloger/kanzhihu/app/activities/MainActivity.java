@@ -2,16 +2,11 @@ package com.xloger.kanzhihu.app.activities;
 
 import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
-import android.app.ActionBar;
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
-import android.support.v4.app.FragmentActivity;
-import android.support.v4.widget.SwipeRefreshLayout;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.view.*;
 import android.widget.AbsListView;
 import android.widget.ListView;
@@ -222,9 +217,6 @@ public class MainActivity extends BaseActivity implements TaskCallBack, SwipeRef
 
     /**
      * 启动答案页，并传入需要的参数
-     * @param position
-     * @param date
-     * @param name
      */
     @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
     private void openAnswer(int position,String date,String name){

@@ -35,6 +35,6 @@ public class ConfigUtil {
     public void setIsOpenUrl(boolean b){
         SharedPreferences.Editor editor = sp.edit();
         editor.putBoolean("isOpenUrl",b);
-        editor.commit();
+        editor.apply();
     }
 }
