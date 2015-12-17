@@ -32,7 +32,6 @@ public class StreamUtil {
             }
     }
 
-    //TODO 用正确的姿势关闭？
     public static byte[] readStream(InputStream in){
         byte[] bytes = null;
         if (in != null) {
