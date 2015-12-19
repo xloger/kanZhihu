@@ -27,8 +27,8 @@ android {
         applicationId "com.xloger.kanzhihu.app"
         minSdkVersion 14
         targetSdkVersion 22
-        versionCode 4
-        versionName "1.2.1"
+        versionCode 5
+        versionName "1.2.2"
     }
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_6

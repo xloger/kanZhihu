@@ -13,3 +13,4 @@
 * 使用了Android5.0推出的RecyclerView与CardView；
 * 用ToolBar代替了ActionBar，并且不需要每个布局手动添加ToolBar。（解决方案来自：[薄荷Toolbar(ActionBar)的适配方案](http://stormzhang.com/android/2015/08/16/boohee-toolbar/)）
 * ListView的局部刷新（用于消除“未读”标记）。
+* Adapter中避免了匿名内部类

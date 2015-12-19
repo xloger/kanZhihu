@@ -42,13 +42,9 @@ public class AnswerAdapter extends RecyclerView.Adapter<AnswerAdapter.AnswerView
     public void onBindViewHolder(AnswerViewHolder answerViewHolder, final int i) {
         answerViewHolder.title.setText(answerList.get(i).getTitle());
         answerViewHolder.summary.setText(answerList.get(i).getSummary());
-        //TODO 重大Bug，在Adapter中采用了匿名内部类
-        answerViewHolder.layout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                callBack.onClick(answerList.get(openAnswerNum));
-            }
-        });
+
+        answerViewHolder.layout.setTag(i);
+        answerViewHolder.layout.setOnClickListener(openListener);
 
         answerViewHolder.author.setText(answerList.get(i).getAuthorname());
         String voteString=answerList.get(i).getVote()+"";
@@ -61,11 +57,10 @@ public class AnswerAdapter extends RecyclerView.Adapter<AnswerAdapter.AnswerView
         CacheTool.cacheImage(answerViewHolder.avatar,answerList.get(i).getAvatar(),30,30);
     }
 
-    private int openAnswerNum=0;
     private View.OnClickListener openListener=new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            callBack.onClick(answerList.get(openAnswerNum));
+            callBack.onClick(answerList.get((Integer) v.getTag()));
         }
     };
 
