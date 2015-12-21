@@ -6,4 +6,23 @@
     <string name="title_activity_web">WebActivity</string>
     <string name="title_activity_setting">设置</string>
     <string name="title_activity_about">关于</string>
+
+    <string name="p1">本应用为kzhihu.com的安卓App，内容皆为知乎网所提供，此应用仅提供入口。版权归原作者所有。</string>
+    <string name="p2">昨日最新、近日热门、历史精华。每天三次，每次二三十条优质内容，让您发现知乎热点、重温经典答案。</string>
+    <string name="p3">数据源为知乎@苏莉安 提供，该应用由xloger开发 \n关于内容的建议请反馈至 http://www.kanzhihu.com/messageboard \n关于应用的建议请反馈至邮箱：kanzhihu@xloger.com</string>
+    <string name="p4">文案什么的，我真的很无力啦Orz</string>
+    <string name="p_versions">版本号：1.0</string>
+
+    <string name="q1">Q:看知乎的优势在哪里？</string>
+    <string name="a1">相比于知乎日报，它为您带来更多的精彩内容；\n相比于知乎您私人的TimeLine，它拥有更全面的热点问答，还有历史精华等页面让你发现错过的好答案；\n它还有“随便看看”功能，让您在意犹未尽之余仍可浏览。</string>
+    <string name="q2">Q:已经有网页版了，为什么我要下这个App？</string>
+    <string name="a2">网页版固然写的很好，但是国产浏览器都太流氓了，想看具体的某个问题却无法唤出知乎App。这也是我开发这款应用的初衷。</string>
+    <string name="q3">Q:没装知乎App的用户该怎么办呢？内置浏览器模式又是什么？</string>
+    <string name="a3">没装知乎App的话，会使用您的默认浏览器打开。对于这种链接的处理，有节操的浏览器都是只使用单个页面解析内容（比如知乎App打开这个就只是打开这个页面，不会启动整个应用），而大部分国产浏览器则会启动它们的全部服务，又慢又卡又恶心。\n所以作者只能写了“内置浏览器打开”功能，就像微信、QQ所做的那样。但由于作者没资金租服务器做图片压缩中转，所以用“内置浏览器打开”模式可能会比较耗流量，希望您注意。</string>
+    <string name="q4">Q:为什么我Android4.X的手机按菜单键弹出的选项是黑色哒！</string>
+    <string name="a4">Orz我实在无力了......当时折腾了一天还是没法解决这个问题</string>
+    <string name="q5">Q:你做这个App到现在最想感谢的是谁？</string>
+    <string name="a5">答案隐藏。（我才不告诉你们呢）</string>
+    <string name="a5_hide">当然是酷安的基佬们啦！感谢你们的评论支持，才让我有动力继续开发下去的\\^O^/</string>
+
 </resources>

@@ -77,7 +77,12 @@
         <!--<item name="android:textColor">#000</item>-->
     </style>
 
-    <style name="test">
+    <style name="QuestionStyle">
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@color/text_one</item>
+    </style>
+    <style name="AnswerStyle">
+        <item name="android:textColor">@color/text_two</item>
     </style>
 
 </resources>

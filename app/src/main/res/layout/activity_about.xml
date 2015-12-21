@@ -1,45 +1,127 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                xmlns:tools="http://schemas.android.com/tools"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-              android:orientation="vertical"
-              android:divider="@drawable/divider"
-              android:showDividers="middle"
-              android:padding="10dp"
-                tools:context="com.xloger.kanzhihu.app.activities.AboutActivity">
+<ScrollView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context="com.xloger.kanzhihu.app.activities.AboutActivity"
+        >
 
-    <TextView
-            android:text="本应用为kzhihu.com的安卓App，内容皆为知乎网所提供，此应用仅提供入口。版权归原作者所有。"
-            android:layout_width="wrap_content"
+    <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:autoLink="email|phone|web"
-            />
-    <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="昨日最新、近日热门、历史精华。每天三次，每次二三十条优质内容，让您发现知乎热点、重温经典答案。"
-            />
-    <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="相比知乎日报，为您提供更多优质内容；相比知乎，还您一个干干净净的 TimeLine "
-            />
-    <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="数据源为知乎@苏莉安 提供，该应用由xloger开发 \n关于内容的建议请反馈至 http://www.kanzhihu.com/messageboard \n关于应用的建议请反馈至邮箱：kanzhihu@xloger.com"
-            android:autoLink="email|phone|web"
-            />
-    <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="文案什么的，我真的很无力啦Orz"
-            />
-    <TextView
-            android:id="@+id/versions"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="版本号：1.0"
-            />
+            android:orientation="vertical"
+            android:divider="@drawable/divider"
+            android:showDividers="middle"
+            android:padding="10dp"
+            >
 
-</LinearLayout>
+        <TextView
+                android:text="@string/p1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:autoLink="email|phone|web"
+                />
+
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/p2"
+                />
+
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/p3"
+                android:autoLink="email|phone|web"
+                />
+
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/p4"
+                />
+
+        <TextView
+                android:id="@+id/versions"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/p_versions"
+                />
+
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="40dp"
+                style="@style/QuestionStyle"
+                android:text="@string/q1"
+                />
+
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/AnswerStyle"
+                android:text="@string/a1"
+                />
+
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/QuestionStyle"
+                android:text="@string/q2"
+                />
+
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/AnswerStyle"
+                android:text="@string/a2"
+                />
+
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/QuestionStyle"
+                android:text="@string/q3"
+                />
+
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/AnswerStyle"
+                android:text="@string/a3"
+                />
+
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/QuestionStyle"
+                android:text="@string/q4"
+                />
+
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/AnswerStyle"
+                android:text="@string/a4"
+                />
+
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/QuestionStyle"
+                android:text="@string/q5"
+                />
+
+        <TextView
+                android:id="@+id/about_a5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:clickable="true"
+                android:background="@drawable/item_click_black"
+                style="@style/AnswerStyle"
+                android:text="@string/a5"
+                />
+
+    </LinearLayout>
+
+</ScrollView>
