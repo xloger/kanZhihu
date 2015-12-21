@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.widget.SwipeRefreshLayout;
+import android.text.TextUtils;
 import android.view.*;
 import android.widget.AbsListView;
 import android.widget.ListView;
@@ -21,6 +22,7 @@ import com.xloger.kanzhihu.app.entities.Post;
 import com.xloger.kanzhihu.app.tasks.ShowPostsTask;
 import com.xloger.kanzhihu.app.tasks.TaskCallBack;
 import com.xloger.kanzhihu.app.tasks.TaskResult;
+import com.xloger.kanzhihu.app.utils.MyLog;
 import org.json.JSONObject;
 
 import java.lang.reflect.Field;
@@ -306,8 +308,6 @@ public class MainActivity extends BaseActivity implements TaskCallBack, SwipeRef
             e.printStackTrace();
         }
     }
-
-
 
 
     /**

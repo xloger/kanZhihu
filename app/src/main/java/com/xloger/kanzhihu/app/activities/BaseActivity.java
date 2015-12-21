@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.LinearLayout;
+import com.umeng.analytics.MobclickAgent;
 import com.xloger.kanzhihu.app.R;
 
 /**
@@ -29,6 +30,7 @@ public class BaseActivity extends AppCompatActivity {
             localLayoutParams.flags = (WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS | localLayoutParams.flags);
         }
         initToolbar();
+
     }
 
     private void initToolbar() {
@@ -49,5 +51,17 @@ public class BaseActivity extends AppCompatActivity {
         if (rootLayout == null) return;
         rootLayout.addView(view, new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
         initToolbar();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        MobclickAgent.onResume(this);
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        MobclickAgent.onPause(this);
     }
 }
