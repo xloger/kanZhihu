@@ -2,7 +2,13 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.xloger.kanzhihu.app" >
 
-    <uses-permission android:name="android.permission.INTERNET" />
+    <!--<uses-permission android:name="android.permission.INTERNET" />-->
+
+    <!-- 友盟SDK权限 -->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
 
     <application
         android:name=".MainApplication"
@@ -35,6 +41,10 @@
             android:name=".activities.AboutActivity"
             android:label="@string/title_activity_about" >
         </activity>
+
+        <meta-data android:value="56760df6e0f55a333e0030b5" android:name="UMENG_APPKEY"/>
+        <meta-data android:value="GooglePlay" android:name="UMENG_CHANNEL"/>
+
     </application>
 
 </manifest>

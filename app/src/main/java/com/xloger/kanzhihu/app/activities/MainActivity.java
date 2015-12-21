@@ -12,6 +12,7 @@ import android.widget.AbsListView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
+import com.umeng.analytics.MobclickAgent;
 import com.xloger.kanzhihu.app.Constants;
 import com.xloger.kanzhihu.app.R;
 import com.xloger.kanzhihu.app.adapter.PostAdapter;
@@ -42,7 +43,6 @@ public class MainActivity extends BaseActivity implements TaskCallBack, SwipeRef
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         context = this;
-
 
 //        ActionBar actionBar = getActionBar();
 //        if (actionBar != null) {
