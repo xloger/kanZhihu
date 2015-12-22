@@ -37,4 +37,15 @@ public class ConfigUtil {
         editor.putBoolean("isOpenUrl",b);
         editor.apply();
     }
+
+    public boolean isFirstRun(){
+        boolean isFirstRun=sp.getBoolean("isFirstRun",true);
+        if (isFirstRun){
+            SharedPreferences.Editor editor = sp.edit();
+            editor.putBoolean("isFirstRun",false);
+            editor.apply();
+        }
+
+        return isFirstRun;
+    }
 }

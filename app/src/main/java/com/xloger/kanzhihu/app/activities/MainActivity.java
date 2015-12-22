@@ -3,10 +3,12 @@ package com.xloger.kanzhihu.app.activities;
 import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.widget.SwipeRefreshLayout;
+import android.support.v7.app.AlertDialog;
 import android.text.TextUtils;
 import android.view.*;
 import android.widget.AbsListView;
@@ -22,6 +24,8 @@ import com.xloger.kanzhihu.app.entities.Post;
 import com.xloger.kanzhihu.app.tasks.ShowPostsTask;
 import com.xloger.kanzhihu.app.tasks.TaskCallBack;
 import com.xloger.kanzhihu.app.tasks.TaskResult;
+import com.xloger.kanzhihu.app.utils.CheckUtil;
+import com.xloger.kanzhihu.app.utils.ConfigUtil;
 import com.xloger.kanzhihu.app.utils.MyLog;
 import org.json.JSONObject;
 
@@ -46,12 +50,6 @@ public class MainActivity extends BaseActivity implements TaskCallBack, SwipeRef
         setContentView(R.layout.activity_main);
         context = this;
 
-//        ActionBar actionBar = getActionBar();
-//        if (actionBar != null) {
-//            actionBar.setDisplayShowHomeEnabled(false);
-//        }
-
-
         //初始化控件
         listView = (ListView) findViewById(R.id.main_list_view);
         swipeRefreshLayout = (SwipeRefreshLayout) findViewById(R.id.main_swipe_refresh_layout);
@@ -73,6 +71,8 @@ public class MainActivity extends BaseActivity implements TaskCallBack, SwipeRef
 
 
 //        setOverflowShowingAlways();
+
+        checkZhiHu();
 
 
     }
@@ -113,7 +113,7 @@ public class MainActivity extends BaseActivity implements TaskCallBack, SwipeRef
         String date=null;
         Date startDate=new Date();
         long begin=System.currentTimeMillis();
-        DateFormat format=new SimpleDateFormat("yyyy-MM-dd");
+        DateFormat format=new SimpleDateFormat("yyyy-MM-dd",Locale.getDefault());
         try {
             startDate=format.parse(Constants.START_DATE);
         } catch (ParseException e) {
@@ -307,6 +307,44 @@ public class MainActivity extends BaseActivity implements TaskCallBack, SwipeRef
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    private void checkZhiHu(){
+        boolean isFirstRun = ConfigUtil.newInstance().isFirstRun();
+        if (isFirstRun){
+            final boolean isInstallZhiHu = CheckUtil.isInstallZhiHu(context);
+            StringBuffer dialogText=new StringBuffer("监测到您");
+            if (isInstallZhiHu){
+                dialogText.append("安装了知乎App。\n");
+                dialogText.append("答案详情将调用知乎App打开。");
+            }else {
+                dialogText.append("未安装知乎App。\n");
+                dialogText.append("答案详情将使用内置浏览器打开。该方式会比较耗流量，请注意。");
+            }
+            dialogText.append("\n\n您希望我这样处理么？（该选项可以在“设置”页面修改）");
+
+            AlertDialog.Builder builder=new AlertDialog.Builder(context);
+            builder.setTitle("初始化检测").setMessage(dialogText);
+            builder.setPositiveButton("是的", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    ConfigUtil configUtil = ConfigUtil.newInstance();
+                    if (isInstallZhiHu){
+                        configUtil.setIsOpenUrl(true);
+                    }else {
+                        configUtil.setIsOpenUrl(false);
+                    }
+                }
+            });
+            builder.setNegativeButton("不需要", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    dialog.dismiss();
+                }
+            });
+            builder.create().show();
+        }
+
     }
 
 
