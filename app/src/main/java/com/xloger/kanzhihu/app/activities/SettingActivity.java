@@ -7,7 +7,7 @@ import android.widget.CheckBox;
 import com.xloger.kanzhihu.app.R;
 import com.xloger.kanzhihu.app.utils.ConfigUtil;
 
-public class SettingActivity extends BaseActivity {
+public class SettingActivity extends SwipeBackActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
