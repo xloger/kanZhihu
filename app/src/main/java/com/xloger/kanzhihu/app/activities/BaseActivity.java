@@ -10,13 +10,14 @@ import android.view.WindowManager;
 import android.widget.LinearLayout;
 import com.umeng.analytics.MobclickAgent;
 import com.xloger.kanzhihu.app.R;
+import me.imid.swipebacklayout.lib.app.*;
 
 /**
  * Created by xloger on 12月12日.
  * Author:xloger
  * Email:phoenix@xloger.com
  */
-public class BaseActivity extends AppCompatActivity {
+public class BaseActivity extends me.imid.swipebacklayout.lib.app.SwipeBackActivity {
     private LinearLayout rootLayout;
 
     @Override

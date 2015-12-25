@@ -28,7 +28,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
-public class AnswerActivity extends SwipeBackActivity implements TaskCallBack, SwipeRefreshLayout.OnRefreshListener {
+public class AnswerActivity extends BaseActivity implements TaskCallBack, SwipeRefreshLayout.OnRefreshListener {
 
     private RecyclerView recyclerView;
     private List<Answer> answerList;
