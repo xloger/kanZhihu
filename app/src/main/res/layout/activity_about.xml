@@ -49,6 +49,14 @@
                 />
 
         <TextView
+                android:id="@+id/thanks"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="感谢以下开源项目： \nhttps://github.com/ikew0ng/SwipeBackLayout "
+                android:autoLink="email|phone|web"
+                />
+
+        <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="40dp"

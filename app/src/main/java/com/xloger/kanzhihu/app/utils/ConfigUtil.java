@@ -12,8 +12,11 @@ public class ConfigUtil {
     private static ConfigUtil configUtil;
     private SharedPreferences sp;
 
+    private int isOpenUrlRam;
+
     private ConfigUtil(Context context){
         sp=context.getSharedPreferences("config",0);
+        isOpenUrlRam=-1;
     }
 
     public static void createInstance(Context context){
@@ -28,7 +31,19 @@ public class ConfigUtil {
     }
 
     public boolean getIsOpenUrl(){
+        if (isOpenUrlRam!=-1){
+            if (isOpenUrlRam==1){
+                return true;
+            }else {
+                return false;
+            }
+        }
         boolean isOpenUrl = sp.getBoolean("isOpenUrl", true);
+        if (isOpenUrl){
+            isOpenUrlRam=1;
+        }else {
+            isOpenUrlRam=0;
+        }
         return isOpenUrl;
     }
 
@@ -36,6 +51,11 @@ public class ConfigUtil {
         SharedPreferences.Editor editor = sp.edit();
         editor.putBoolean("isOpenUrl",b);
         editor.apply();
+        if (b){
+            isOpenUrlRam=1;
+        }else {
+            isOpenUrlRam=0;
+        }
     }
 
     public boolean isFirstRun(){
