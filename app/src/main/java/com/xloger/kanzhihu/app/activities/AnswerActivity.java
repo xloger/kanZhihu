@@ -21,6 +21,7 @@ import com.xloger.kanzhihu.app.tasks.TaskCallBack;
 import com.xloger.kanzhihu.app.tasks.TaskResult;
 import com.xloger.kanzhihu.app.utils.ConfigUtil;
 import com.xloger.kanzhihu.app.utils.MyLog;
+import me.imid.swipebacklayout.lib.SwipeBackLayout;
 import org.json.JSONObject;
 
 import java.text.DateFormat;
@@ -28,7 +29,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
-public class AnswerActivity extends BaseActivity implements TaskCallBack, SwipeRefreshLayout.OnRefreshListener {
+public class AnswerActivity extends BaseActivity implements TaskCallBack {
 
     private RecyclerView recyclerView;
     private List<Answer> answerList;
@@ -44,11 +45,12 @@ public class AnswerActivity extends BaseActivity implements TaskCallBack, SwipeR
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_answer);
 
-        swipeRefreshLayout = (SwipeRefreshLayout) findViewById(R.id.answer_swipe_refresh_layout);
 
-        //设置SwipeRefreshLayout
-        swipeRefreshLayout.setColorSchemeResources(R.color.theme);
-        swipeRefreshLayout.setOnRefreshListener(this);
+//        swipeRefreshLayout = (SwipeRefreshLayout) findViewById(R.id.answer_swipe_refresh_layout);
+//
+//        //设置SwipeRefreshLayout
+//        swipeRefreshLayout.setColorSchemeResources(R.color.theme);
+//        swipeRefreshLayout.setOnRefreshListener(this);
 
         recyclerView = (RecyclerView) findViewById(R.id.answer_recycler_view);
 
@@ -90,6 +92,11 @@ public class AnswerActivity extends BaseActivity implements TaskCallBack, SwipeR
             actionBar.setTitle(title);
         }
 
+        //消除回退标记
+        Intent intent = new Intent();
+        intent.putExtra("result_id",position);
+        setResult(Constants.ACTION_ANSWER_RESULT,intent);
+
     }
 
     @Override
@@ -122,7 +129,7 @@ public class AnswerActivity extends BaseActivity implements TaskCallBack, SwipeR
         }else {
             Toast.makeText(this,"加载超时，请重试",Toast.LENGTH_SHORT).show();
         }
-        swipeRefreshLayout.setRefreshing(false);
+//        swipeRefreshLayout.setRefreshing(false);
         onRead();
     }
 
@@ -152,27 +159,30 @@ public class AnswerActivity extends BaseActivity implements TaskCallBack, SwipeR
         }
     };
 
-    @Override
-    public void onRefresh() {
-        task = new ShowAnswersTask(this);
-        Map<String,String> map=new HashMap<String, String>();
-        map.put("date",date);
-        map.put("name",name);
-        task.execute(map);
-    }
+//    @Override
+//    public void onRefresh() {
+//        task = new ShowAnswersTask(this);
+//        Map<String,String> map=new HashMap<String, String>();
+//        map.put("date",date);
+//        map.put("name",name);
+//        task.execute(map);
+//    }
 
     private void onRead(){
         ReadDB readDB=new ReadDB(getApplicationContext());
         readDB.setRead(date,name);
     }
 
-    @Override
-    public void onBackPressed() {
-        Intent intent = new Intent();
-        intent.putExtra("result_id",position);
-        setResult(Constants.ACTION_ANSWER_RESULT,intent);
-        super.onBackPressed();
-    }
+
+
+//    @Override
+//    public void onBackPressed() {
+//        Toast.makeText(this,"退出了",Toast.LENGTH_SHORT).show();
+//        Intent intent = new Intent();
+//        intent.putExtra("result_id",position);
+//        setResult(Constants.ACTION_ANSWER_RESULT,intent);
+//        super.onBackPressed();
+//    }
 
     /**
      * 点击事件的回调接口

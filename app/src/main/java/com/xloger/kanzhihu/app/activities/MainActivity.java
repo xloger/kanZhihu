@@ -27,6 +27,7 @@ import com.xloger.kanzhihu.app.tasks.TaskResult;
 import com.xloger.kanzhihu.app.utils.CheckUtil;
 import com.xloger.kanzhihu.app.utils.ConfigUtil;
 import com.xloger.kanzhihu.app.utils.MyLog;
+import me.imid.swipebacklayout.lib.SwipeBackLayout;
 import org.json.JSONObject;
 
 import java.lang.reflect.Field;
@@ -68,6 +69,7 @@ public class MainActivity extends BaseActivity implements TaskCallBack, SwipeRef
         //进行初始化的一次异步获取信息
         ShowPostsTask showPostsTask=new ShowPostsTask(this);
         showPostsTask.execute();
+
 
 
 //        setOverflowShowingAlways();
