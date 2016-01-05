@@ -103,6 +103,35 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 style="@style/QuestionStyle"
+                android:text="@string/q3_1"
+                />
+
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/AnswerStyle"
+                android:text="@string/a3_1"
+                />
+
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/QuestionStyle"
+                android:text="@string/q3_2"
+                />
+
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/AnswerStyle"
+                android:text="@string/a3_2"
+                android:autoLink="email|phone|web"
+                />
+
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/QuestionStyle"
                 android:text="@string/q4"
                 />
 

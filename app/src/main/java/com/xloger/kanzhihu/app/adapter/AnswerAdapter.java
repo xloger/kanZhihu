@@ -22,8 +22,8 @@ import java.util.List;
  */
 public class AnswerAdapter extends RecyclerView.Adapter<AnswerAdapter.AnswerViewHolder> {
     private Context context;
-    private List<Answer> answerList;
-    private AnswerActivity.OpenLinkCallBack callBack;
+    private static List<Answer> answerList;
+    private static AnswerActivity.OpenLinkCallBack callBack;
 
     public AnswerAdapter(List<Answer> answerList, Context context,AnswerActivity.OpenLinkCallBack callBack) {
         this.answerList = answerList;
@@ -57,7 +57,7 @@ public class AnswerAdapter extends RecyclerView.Adapter<AnswerAdapter.AnswerView
         CacheTool.cacheImage(answerViewHolder.avatar,answerList.get(i).getAvatar(),30,30);
     }
 
-    private View.OnClickListener openListener=new View.OnClickListener() {
+    private static View.OnClickListener openListener=new View.OnClickListener() {
         @Override
         public void onClick(View v) {
             callBack.onClick(answerList.get((Integer) v.getTag()));

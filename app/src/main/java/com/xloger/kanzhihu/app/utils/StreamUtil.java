@@ -16,6 +16,10 @@ public class StreamUtil {
 
     public static void close(Object object){
             try {
+                if (object == null) {
+                    return;
+                }
+
                 if(object instanceof InputStream){
                     ((InputStream) object).close();
                 }else if (object instanceof OutputStream){

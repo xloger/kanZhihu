@@ -90,7 +90,7 @@ public class PostAdapter extends AbstractAdapter<Post> {
         return view;
     }
 
-    private class ViewHolder{
+    private static class ViewHolder{
         public TextView date;
         public TextView name;
         public TextView excerpt;
