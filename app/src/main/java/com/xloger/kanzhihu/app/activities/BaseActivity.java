@@ -1,5 +1,6 @@
 package com.xloger.kanzhihu.app.activities;
 
+import android.app.Activity;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -17,7 +18,7 @@ import me.imid.swipebacklayout.lib.app.*;
  * Author:xloger
  * Email:phoenix@xloger.com
  */
-public class BaseActivity extends me.imid.swipebacklayout.lib.app.SwipeBackActivity {
+public class BaseActivity extends SwipeBackActivity {
     private LinearLayout rootLayout;
 
     @Override
